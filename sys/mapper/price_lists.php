@@ -16,7 +16,11 @@ class PriceListsMapper extends DataMapper {
       } elseif ($key == "time_zone_end") {
         array_push($set,"time_zone_end >= :time_zone_end");
       } elseif ($key == "utilization_time") {
-        array_push($set,"CAST(utilization_time AS SIGNED) >= CAST(:utilization_time AS SIGNED)");
+        if ($value == "Free" || $value == "Lodging") {
+          array_push($set,"utilization_time = :utilization_time");
+        } else {
+          array_push($set,"CAST(utilization_time AS SIGNED) >= CAST(:utilization_time AS SIGNED)");
+        }
       } else {
         continue;
       }

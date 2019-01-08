@@ -64,6 +64,8 @@ $_SESSION["title"] = PRICE_LIST;
             <button class="button" v-on:click="click_utilization_time(90)">90</button>
             <button class="button" v-on:click="click_utilization_time(100)">100</button>
             <button class="button" v-on:click="click_utilization_time(180)">180</button>
+            <button class="button" v-on:click="click_utilization_time('Free')">フリータイム</button>
+            <button class="button" v-on:click="click_utilization_time('Lodging')">宿泊</button>
           </div>
         </div>
       </nav>
@@ -99,7 +101,9 @@ $_SESSION["title"] = PRICE_LIST;
       <!-- <td>{{ p.max_price }}</td> -->
       <td>{{ p.time_zone_start }}</td>
       <td>{{ p.time_zone_end }}</td>
-      <td>{{ p.utilization_time }}</td>
+      <td v-if="p.utilization_time == 'Free'">フリー</td>
+      <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
+      <td v-else>{{ p.utilization_time }}</td>
       <!-- <td>{{ p.created_at }}</td>
       <td>{{ p.updated_at }}</td> -->
     </tr>
