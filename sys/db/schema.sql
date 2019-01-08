@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS price_lists (
   time_zone_start time default '0:00',
   time_zone_end time default '0:00',
   utilization_time varchar(255) default null,
+  from_checkin boolean not null default false,
   created_at timestamp not null default current_timestamp,
   updated_at timestamp not null default current_timestamp on update current_timestamp
 );

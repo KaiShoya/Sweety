@@ -14,7 +14,8 @@ class PriceListsMapper extends DataMapper {
       } elseif ($key == "time_zone_start") {
         array_push($set,"time_zone_start <= :time_zone_start");
       } elseif ($key == "time_zone_end") {
-        array_push($set,"time_zone_end >= :time_zone_end");
+        array_push($set,"(from_checkin = false AND time_zone_end >= :time_zone_end) OR ".
+            "(from_checkin = true AND time_zone_end >= :time_zone_start)");
       } elseif ($key == "utilization_time") {
         if ($value == "Free" || $value == "Lodging") {
           array_push($set,"utilization_time = :utilization_time");
@@ -27,7 +28,11 @@ class PriceListsMapper extends DataMapper {
       }
       $data[$key] = $value;
     }
-    $sql = 'SELECT *, time_zone_end - INTERVAL :utilization_time MINUTE AS last_start_time, CASE WHEN utilization_time IN ("Free", "Lodging") THEN TIMEDIFF(time_zone_end, :time_zone_start) ELSE TIME("00:00:00") + INTERVAL :utilization_time MINUTE END AS time_diff FROM '.self::$name.' WHERE '.implode(" AND ", $set).' ORDER BY '.self::$sort.';';
+    $sql = 'SELECT *, time_zone_end - INTERVAL :utilization_time MINUTE AS last_start_time, '.
+        'CASE WHEN utilization_time IN ("Free", "Lodging") '.
+        'THEN TIMEDIFF(time_zone_end, :time_zone_start) '.
+        'ELSE TIME("00:00:00") + INTERVAL :utilization_time MINUTE END AS time_diff '.
+        'FROM '.self::$name.' WHERE '.implode(" AND ", $set).' ORDER BY '.self::$sort.';';
     $sth = self::$db->prepare($sql);
     $sth->execute($data);
     return $sth->fetchAll(PDO::FETCH_ASSOC);
