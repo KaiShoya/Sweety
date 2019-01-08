@@ -91,6 +91,8 @@ var app = new Vue({
             utilization_time: value.utilization_time,
             created_at: value.created_at,
             updated_at: value.updated_at,
+            time_diff: value.time_diff,
+            last_start_time: value.last_start_time,
           })
         })
       })
