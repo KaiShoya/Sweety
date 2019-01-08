@@ -62,7 +62,7 @@ $_SESSION["title"] = PRICE_LIST;
           <div class="level-item" id="utilization_time">
             <button class="button" v-on:click="click_utilization_time(60)">60</button>
             <button class="button" v-on:click="click_utilization_time(90)">90</button>
-            <button class="button" v-on:click="click_utilization_time(100)">100</button>
+            <button class="button" v-on:click="click_utilization_time(120)">120</button>
             <button class="button" v-on:click="click_utilization_time(180)">180</button>
             <button class="button" v-on:click="click_utilization_time('Free')">フリータイム</button>
             <button class="button" v-on:click="click_utilization_time('Lodging')">宿泊</button>
@@ -105,7 +105,7 @@ $_SESSION["title"] = PRICE_LIST;
       <td>{{ p.time_zone_end }}</td>
       <td v-if="p.utilization_time == 'Free'">フリー</td>
       <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
-      <td v-else>{{ p.utilization_time }}分コース</td>
+      <td v-else>{{ p.utilization_time }}分</td>
       <td>{{ p.time_diff }}</td>
       <td>{{ p.last_start_time }}</td>
       <!-- <td>{{ p.created_at }}</td>

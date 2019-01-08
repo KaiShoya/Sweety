@@ -86,13 +86,13 @@ var app = new Vue({
             day_of_week: app.get_day_of_week_name(value.day_of_week),
             min_price: value.min_price,
             max_price: value.max_price,
-            time_zone_start: value.time_zone_start,
-            time_zone_end: value.time_zone_end,
+            time_zone_start: value.time_zone_start.slice(0, -3),
+            time_zone_end: value.time_zone_end.slice(0, -3),
             utilization_time: value.utilization_time,
             created_at: value.created_at,
             updated_at: value.updated_at,
-            time_diff: value.time_diff,
-            last_start_time: value.last_start_time,
+            time_diff: value.time_diff.slice(0, -3),
+            last_start_time: value.last_start_time.slice(0, -3),
           })
         })
       })
