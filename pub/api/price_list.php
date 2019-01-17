@@ -4,7 +4,7 @@ include_once '../../sys/init.php';
 $dow = isset($_REQUEST["dow_id"]) ? $_REQUEST["dow_id"] : "0";
 $start_hour = isset($_REQUEST["start_hour"]) ? $_REQUEST["start_hour"] : null;
 $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
-$utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : null;
+$utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";
 
 $prices = new PriceListsMapper();
 // 最低価格順に並び替え
@@ -17,13 +17,13 @@ if ($dow == 0 && $start_hour == null && $utilization_time == null) {
   if ($dow != 0) {
     $model->day_of_week = $dow;
   }
-  if ($start_hour != null) {
+  if ($start_hour == null) {
+    $model->time_zone_start = "00:00:00";
+  } else {
     $model->time_zone_start = "$start_hour:$start_time:00";
-    $model->time_zone_end = "$start_hour:$start_time:00";
+    // $model->time_zone_end = "$start_hour:$start_time:00";
   }
-  if ($utilization_time != null) {
-    $model->utilization_time = $utilization_time;
-  }
+  $model->utilization_time = $utilization_time;
   $price_list = $prices::find_by($model);
 }
 
