@@ -12,3 +12,10 @@ define("SYS_PATH", TOP_PATH.'/sys');
 define("INDEX", 'インデックス');
 define("HOTEL_LIST", 'ホテル一覧');
 define("PRICE_LIST", '価格一覧');
+
+// DB情報
+define("DB_TYPE", 'mysql'); // mysql or pgsql.
+define("DB_HOST", 'localhost');
+define("DB_NAME", 'kaisdev');
+define("DB_USER", 'root');
+define("DB_PASS", '');

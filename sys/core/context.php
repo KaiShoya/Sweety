@@ -1,9 +1,4 @@
 <?php
-const DB_TYPE = 'mysql'; // mysql or pgsql.
-const DB_HOST = 'localhost';
-const DB_NAME = 'kaisdev';
-const DB_USER = 'root';
-const DB_PASS = '';
 
 class Context {
   private static $pdo = null;
