@@ -1,7 +1,7 @@
 <nav class="navbar is-dark">
 	<div id="navbarExampleTransparentExample" class="navbar-menu">
 		<div class="navbar-brand">
-			<a class="navbar-item">ホテル一覧</a>
+			<div class="navbar-item">ホテル検索</div>
 		</div>
 		<div class="navbar-start">
 		<!-- <a class="navbar-item <?= ($_SESSION["title"] == INDEX) ? "is-active" : "" ; ?>" href="<?= PUBLIC_TOP.'/index.php' ?>"><?= INDEX ?></a> -->
