@@ -133,7 +133,12 @@ var app = new Vue({
       params[label] = value
       tmp_arr = []
       Object.keys(params).forEach(function (key) {
-        tmp_arr.push(key + "=" + params[key])
+        if (params[key] === null) {
+        } else if (params[key] === undefined) {
+          tmp_arr.push(key)
+        } else {
+          tmp_arr.push(key + "=" + params[key])
+        }
       })
       return tmp_arr.join("&")
     },
@@ -177,8 +182,8 @@ var app = new Vue({
     },
     reset_start_time: function(e) {
       params = this.get_params()
-      params["start_hour"] = "0"
-      params = app.create_params("start_time", "00", params)
+      params["start_hour"] = undefined
+      params = app.create_params("start_time", undefined, params)
       window.location.href = window.location.pathname + "?" + params
     },
 
