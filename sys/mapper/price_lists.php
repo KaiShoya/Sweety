@@ -45,6 +45,11 @@ class PriceListsMapper extends DataMapper {
           array_push($set, "(CAST(utilization_time AS SIGNED) >= CAST(:utilization_time AS SIGNED) OR ".
               "(utilization_time IN ('Free', 'Lodging') AND (time_zone_end - INTERVAL :utilization_time MINUTE) >= :time_zone_start))");
         }
+      } elseif ($key == "credit_card") {
+        if ($value) {
+          array_push($set,"credit_card = true");
+        }
+        continue;
       } else {
         continue;
       }
@@ -55,7 +60,7 @@ class PriceListsMapper extends DataMapper {
       unset($data["time_zone_start"]);
     }
 
-    $sql = 'SELECT '.implode(", ", $select).' FROM '.self::$name.' WHERE '.implode(" AND ", $set).' ORDER BY '.self::$sort.';';
+    $sql = 'SELECT '.implode(", ", $select).' FROM '.self::$name.' LEFT JOIN (SELECT id AS h_id, credit_card FROM hotels) h ON hotel_id = h_id WHERE '.implode(" AND ", $set).' ORDER BY '.self::$sort.';';
     $sth = self::$db->prepare($sql);
     $sth->execute($data);
     return $sth->fetchAll(PDO::FETCH_ASSOC);

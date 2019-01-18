@@ -5,6 +5,7 @@ $dow = isset($_REQUEST["dow_id"]) ? $_REQUEST["dow_id"] : "0";
 $start_hour = isset($_REQUEST["start_hour"]) ? $_REQUEST["start_hour"] : null;
 $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
 $utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";
+$card_accepted = isset($_REQUEST["card_accepted"]);
 
 $prices = new PriceListsMapper();
 // 最低価格順に並び替え
@@ -24,6 +25,7 @@ if ($dow == 0 && $start_hour == null && $utilization_time == null) {
     // $model->time_zone_end = "$start_hour:$start_time:00";
   }
   $model->utilization_time = $utilization_time;
+  $model->credit_card = $card_accepted;
   $price_list = $prices::find_by($model);
 }
 
