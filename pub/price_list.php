@@ -73,6 +73,13 @@ $_SESSION["title"] = PRICE_LIST;
           </div>
         </div>
       </nav>
+
+      <label class="checkbox">
+        <input type="checkbox" id="card_accepted"
+            v-model="cardAccepted"
+            v-on:change="change_card_accepted">
+        クレジットカード可
+      </label>
     </div>
 
     <table class="table is-hoverable is-bordered">
