@@ -1,5 +1,5 @@
 <?php
-define("PUBLIC_TOP", '/pub');
+define("PUBLIC_TOP", '/hotel_list/pub');
 define("PUBLIC_PUB", PUBLIC_TOP.'');
 // define("PUBLIC_SYS", PUBLIC_TOP.'/sys');
 define("ASSETS_PATH", PUBLIC_PUB.'/assets');
@@ -16,6 +16,6 @@ define("PRICE_LIST", '価格一覧');
 // DB情報
 define("DB_TYPE", 'mysql'); // mysql or pgsql.
 define("DB_HOST", 'localhost');
-define("DB_NAME", 'shoya85_db');
-define("DB_USER", 'shoya85_root');
-define("DB_PASS", 'sdnvwoqiu3r');
+define("DB_NAME", 'kaisdev');
+define("DB_USER", 'root');
+define("DB_PASS", '');

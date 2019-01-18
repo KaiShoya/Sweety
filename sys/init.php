@@ -7,7 +7,11 @@ error_reporting(E_ALL);
 session_start();
 
 # core
-require_once 'core/constant.php';
+if (gethostname() == "sv5.php.starfree.ne.jp") {
+  require_once 'core/constant.php';
+} else {
+  require_once 'core/constant_dev.php';
+}
 require_once 'core/context.php';
 
 # model
