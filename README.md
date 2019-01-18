@@ -15,3 +15,29 @@
 - 利用開始
 - 利用終了
 - 利用時間
+
+# 環境設定
+```sh
+# Mac
+brew install ncftp
+# CentOS
+sudo yum install -y ncftp
+```
+
+# サーバ情報
+[StarServerFree](https://secure.netowl.jp/starserver/?action_user_free_index=true)
+- FTP
+    host: shoya85.starfree.jp
+    user: shoya85.starfree.jp
+    pass: anua10fweoi32
+    - ファイル転送
+```
+ncftp -u shoya85.starfree.jp shoya85.starfree.jp
+anua10fweoi32
+put -R pub/
+put -R sys/
+```
+
+- MySQL
+    user: shoya85_root
+    pass: sdnvwoqiu3r
