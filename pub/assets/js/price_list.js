@@ -59,7 +59,7 @@ var app = new Vue({
             mapcode: value["mapcode"],
             lat: value["lat"],
             lon: value["lon"],
-            lon: value["credit_card"],
+            credit_card: value["credit_card"],
             created_at: value["created_at"],
             updated_at: value["updated_at"],
           })
