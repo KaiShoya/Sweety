@@ -15,7 +15,7 @@ define("PRICE_LIST", '価格一覧');
 
 // DB情報
 define("DB_TYPE", 'mysql'); // mysql or pgsql.
-define("DB_HOST", 'localhost');
+define("DB_HOST", 'mysql1.php.starfree.ne.jp');
 define("DB_NAME", 'shoya85_db');
 define("DB_USER", 'shoya85_root');
 define("DB_PASS", 'sdnvwoqiu3r');
