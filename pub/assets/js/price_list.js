@@ -156,6 +156,31 @@ var app = new Vue({
       params = app.create_params("start_hour", app.startHour, params)
       window.location.href = window.location.pathname + "?" + params
     },
+    now_start_time: function(e) {
+      date=new Date()
+      h = date.getHours()
+      m = date.getMinutes()
+
+      params = this.get_params()
+      params["start_hour"] = h
+      if (m < 15) {
+        params = app.create_params("start_time", "15", params)
+      } else if (m < 30) {
+        params = app.create_params("start_time", "30", params)
+      } else if (m < 45) {
+        params = app.create_params("start_time", "45", params)
+      } else {
+        params["start_hour"] = h+1
+        params = app.create_params("start_time", "00", params)
+      }
+      window.location.href = window.location.pathname + "?" + params
+    },
+    reset_start_time: function(e) {
+      params = this.get_params()
+      params["start_hour"] = "0"
+      params = app.create_params("start_time", "00", params)
+      window.location.href = window.location.pathname + "?" + params
+    },
 
     change_utilization_time: function(e) {
       params = app.create_params("utilization_time", e.target.value)

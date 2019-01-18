@@ -47,6 +47,10 @@ $_SESSION["title"] = PRICE_LIST;
               <option value="45">45</option>
             </select>
           </div>
+          <div class="level-item" id="utilization_time">
+            <button class="button" v-on:click="now_start_time">今から</button>
+            <button class="button" v-on:click="reset_start_time">指定しない</button>
+          </div>
         </div>
       </nav>
 
