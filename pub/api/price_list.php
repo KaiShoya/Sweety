@@ -29,4 +29,20 @@ if ($dow == 0 && $start_hour == null && $utilization_time == null && !$card_acce
   $price_list = $prices::find_by($model);
 }
 
+if (!isset($_COOKIE["visited"])) {
+  // セッションの保持期間はとりあえず1時間
+  setcookie("visited", "true", time() + 60 * 60);
+
+  $log = new AccessLogs();
+
+  $datetime = new DateTime();
+  $access_time = $datetime->format('Y-m-d H:00:00');
+
+  $log->access_time = $access_time;
+  $log->remote_addr = $_SERVER['REMOTE_ADDR'];
+  $log->http_user_agent = $_SERVER['HTTP_USER_AGENT'];
+  $logMapper = new AccessLogsMapper();
+  $logMapper::add_count($log);
+}
+
 echo json_encode($price_list);

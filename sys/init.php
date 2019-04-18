@@ -3,6 +3,8 @@
 ini_set("display_errors", On);
 error_reporting(E_ALL);
 
+date_default_timezone_set('Asia/Tokyo');
+
 # セッションスタート
 session_start();
 
