@@ -59,7 +59,7 @@ class DataMapper {
     $sql = 'INSERT INTO '.self::$name.' SET '.implode(",", $set);
     $sth = self::$db->prepare($sql);
     $sth->execute($data);
-    return $sth->rowCount();
+    return self::$db->lastInsertId();
   }
 
   public static function destroy($id) {
