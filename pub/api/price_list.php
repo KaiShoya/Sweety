@@ -11,7 +11,7 @@ $prices = new PriceListsMapper();
 // 最低価格順に並び替え
 $prices::$sort = "min_price";
 
-if ($dow == 0 && $start_hour == null && $utilization_time == null) {
+if ($dow == 0 && $start_hour == null && $utilization_time == null && !$card_accepted) {
   $price_list = $prices::all();
 } else {
   $model = new PriceLists();
