@@ -16,14 +16,14 @@ $_SESSION["title"] = HOTEL_LIST;
     <table class="table is-hoverable is-bordered">
       <thead>
         <tr>
-          <th class="col-md-2">id</th>
+          <!-- <th class="col-md-2">id</th> -->
           <th class="col-md-2">ホテル名</th>
           <th class="col-md-2">住所</th>
           <th class="col-md-2">電話番号</th>
-          <th class="col-md-2">マップコード</th>
+          <th class="col-md-2">カード</th>
+          <!-- <th class="col-md-2">マップコード</th> -->
           <!-- <th class="col-md-2">緯度</th>
           <th class="col-md-2">経度</th> -->
-          <th class="col-md-2">カード</th>
           <!-- <th class="col-md-2">created_at</th>
           <th class="col-md-2">updated_at</th> -->
         </tr>
@@ -38,14 +38,14 @@ $_SESSION["title"] = HOTEL_LIST;
   <!-- Tableテンプレート -->
   <script type="text/x-template" id="hotel-row">
     <tr>
-      <td>{{ h.id }}</td>
+      <!-- <td>{{ h.id }}</td> -->
       <td>{{ h.name }}</td>
       <td>{{ h.address }}</td>
       <td><a href="tel:{{ h.phone }}">{{ h.phone }}</a></td>
-      <td>{{ h.mapcode }}</td>
+      <td>{{ h.credit_card }}</td>
+      <!-- <td>{{ h.mapcode }}</td> -->
       <!-- <td>{{ h.lat }}</td>
       <td>{{ h.lon }}</td> -->
-      <td>{{ h.credit_card }}</td>
       <!-- <td>{{ h.created_at }}</td>
       <td>{{ h.updated_at }}</td> -->
     </tr>

@@ -89,11 +89,11 @@ $_SESSION["title"] = PRICE_LIST;
           <th class="col-md-2">曜日</th>
           <th class="col-md-2">最低価格</th>
           <!-- <th class="col-md-2">最高価格</th> -->
-          <th class="col-md-2">利用開始</th>
-          <th class="col-md-2">利用終了</th>
-          <th class="col-md-2">プラン</th>
           <th class="col-md-2">最大利用時間</th>
           <th class="col-md-2">最終入室時間</th>
+          <th class="col-md-2">プラン</th>
+          <th class="col-md-2">利用開始</th>
+          <th class="col-md-2">利用終了</th>
           <!-- <th class="col-md-2">created_at</th>
           <th class="col-md-2">updated_at</th> -->
         </tr>
@@ -112,13 +112,13 @@ $_SESSION["title"] = PRICE_LIST;
       <td>{{ p.day_of_week }}</td>
       <td>{{ p.min_price }}</td>
       <!-- <td>{{ p.max_price }}</td> -->
-      <td>{{ p.time_zone_start }}</td>
-      <td>{{ p.time_zone_end }}</td>
+      <td>{{ p.time_diff }}</td>
+      <td>{{ p.last_start_time }}</td>
       <td v-if="p.utilization_time == 'Free'">フリー</td>
       <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
       <td v-else>{{ p.utilization_time }}分</td>
-      <td>{{ p.time_diff }}</td>
-      <td>{{ p.last_start_time }}</td>
+      <td>{{ p.time_zone_start }}</td>
+      <td>{{ p.time_zone_end }}</td>
       <!-- <td>{{ p.created_at }}</td>
       <td>{{ p.updated_at }}</td> -->
     </tr>
