@@ -32,11 +32,14 @@ sudo yum install -y ncftp
     pass: anua10fweoi32
     - ファイル転送
 ```
-ncftp -u shoya85.starfree.jp shoya85.starfree.jp
-anua10fweoi32
+ncftp -u shoya85.starfree.jp -p sdnvwoqiu3r shoya85.starfree.jp
 put -R pub/
 put -R sys/
 ```
+echo 'open -u shoya85.starfree.jp -p sdnvwoqiu3r shoya85.starfree.jp
+put -R pub/
+put -R sys/
+quit'|ncftp
 
 - MySQL
     user: shoya85_root
