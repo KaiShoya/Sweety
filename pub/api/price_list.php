@@ -5,15 +5,16 @@ $dow = isset($_REQUEST["dow_id"]) ? $_REQUEST["dow_id"] : "0";
 $start_hour = isset($_REQUEST["start_hour"]) ? $_REQUEST["start_hour"] : null;
 $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
 $utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";
-$card_accepted = isset($_REQUEST["card_accepted"]);
+$card_accepted = isset($_REQUEST["card_accepted"]) ? "1" : "0";
 
 $log = new SearchLogs();
+$log->card_accepted = $card_accepted;
 
 $prices = new PriceListsMapper();
 // 最低価格順に並び替え
 $prices::$sort = "min_price";
 
-if ($dow == 0 && $start_hour == null && $utilization_time == null && !$card_accepted) {
+if ($dow == 0 && $start_hour == null && $utilization_time == null && $card_accepted == "0") {
   $price_list = $prices::all();
 
   $log->day_of_week = $dow;
@@ -35,7 +36,6 @@ if ($dow == 0 && $start_hour == null && $utilization_time == null && !$card_acce
   $log->day_of_week = $dow;
   $log->time_zone_start = $model->time_zone_start;
   $log->utilization_time = $model->utilization_time;
-  $log->card_accepted = $model->credit_card;
 }
 
 // ログ保存
