@@ -7,12 +7,16 @@ $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
 $utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";
 $card_accepted = isset($_REQUEST["card_accepted"]);
 
+$log = new SearchLogs();
+
 $prices = new PriceListsMapper();
 // 最低価格順に並び替え
 $prices::$sort = "min_price";
 
 if ($dow == 0 && $start_hour == null && $utilization_time == null && !$card_accepted) {
   $price_list = $prices::all();
+
+  $log->day_of_week = $dow;
 } else {
   $model = new PriceLists();
   if ($dow != 0) {
@@ -27,6 +31,24 @@ if ($dow == 0 && $start_hour == null && $utilization_time == null && !$card_acce
   $model->utilization_time = $utilization_time;
   $model->credit_card = $card_accepted;
   $price_list = $prices::find_by($model);
+
+  $log->day_of_week = $dow;
+  $log->time_zone_start = $model->time_zone_start;
+  $log->utilization_time = $model->utilization_time;
+  $log->card_accepted = $model->credit_card;
+}
+
+// ログ保存
+// 30秒間に複数回検索した場合、ログを上書きする
+$logMapper = new SearchLogsMapper();
+if (isset($_COOKIE["search"])) {
+  $log->id = $_COOKIE["search"];
+  $logMapper::update($log);
+  // cookieの保持期間を更新
+  setcookie("search", $_COOKIE["search"], time() + 30);
+} else {
+  $searchLogsId = $logMapper::add($log);
+  setcookie("search", $searchLogsId, time() + 30);
 }
 
 if (!isset($_COOKIE["visited"])) {
