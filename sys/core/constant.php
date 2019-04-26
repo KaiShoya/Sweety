@@ -5,7 +5,7 @@ define("PUBLIC_PUB", PUBLIC_TOP.'');
 define("ASSETS_PATH", PUBLIC_PUB.'/assets');
 
 define("TOP_PATH", __DIR__.'/../..');
-define("PUB_PATH", TOP_PATH.'/pub');
+define("PUB_PATH", TOP_PATH.PUBLIC_TOP);
 define("SYS_PATH", TOP_PATH.'/sys');
 
 // タイトル
