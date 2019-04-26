@@ -19,12 +19,25 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <nav class="level">
         <div class="level-left">
           <div class="level-item">利用する曜日</div>
-          <div class="level-item" id="day_of_week">
-            <button v-for="dow in day_of_week"
+          <div class="level-item">
+            <button class="button <?= $dow_id == "1" ? "is-primary" : "" ?>" v-on:click="click_dow">月</button>
+            <button class="button <?= $dow_id == "2" ? "is-primary" : "" ?>" v-on:click="click_dow">火</button>
+            <button class="button <?= $dow_id == "3" ? "is-primary" : "" ?>" v-on:click="click_dow">水</button>
+            <button class="button <?= $dow_id == "4" ? "is-primary" : "" ?>" v-on:click="click_dow">木</button>
+            <button class="button <?= $dow_id == "5" ? "is-primary" : "" ?>" v-on:click="click_dow">金</button>
+            <button class="button <?= $dow_id == "6" ? "is-primary" : "" ?>" v-on:click="click_dow">土</button>
+            <button class="button <?= $dow_id == "7" ? "is-primary" : "" ?>" v-on:click="click_dow">日</button>
+          </div>
+          <div class="level-item">
+            <button class="button <?= $dow_id == "8" ? "is-primary" : "" ?>" v-on:click="click_dow">祝日</button>
+            <button class="button <?= $dow_id == "9" ? "is-primary" : "" ?>" v-on:click="click_dow">祝前日</button>
+            <button class="button <?= $dow_id == "0" ? "is-primary" : "" ?>" v-on:click="click_dow">全曜日</button>
+
+            <!-- <button v-for="dow in day_of_week"
                 v-bind:class="['button', activeDowId == dow.id ? ' is-primary' : '']"
                 v-on:click="click_dow">
               {{ dow.name }}
-            </button>
+            </button> -->
           </div>
         </div>
       </nav>
@@ -64,11 +77,13 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
                 v-on:change="change_utilization_time"/>
             <span>分</span>
           </div>
-          <div class="level-item" id="utilization_time">
+          <div class="level-item">
             <button class="button" v-on:click="click_utilization_time(60)">60</button>
             <button class="button" v-on:click="click_utilization_time(90)">90</button>
             <button class="button" v-on:click="click_utilization_time(120)">120</button>
             <button class="button" v-on:click="click_utilization_time(180)">180</button>
+          </div>
+          <div class="level-item">
             <button class="button" v-on:click="click_utilization_time('Free')">フリータイム</button>
             <button class="button" v-on:click="click_utilization_time('Lodging')">宿泊</button>
           </div>
