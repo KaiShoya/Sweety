@@ -1,6 +1,7 @@
 <?php
 include_once '../sys/init.php';
 $_SESSION["title"] = PRICE_LIST;
+$dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +87,9 @@ $_SESSION["title"] = PRICE_LIST;
       <thead>
         <tr>
           <th class="col-md-2">ホテル名</th>
-          <th class="col-md-2">曜日</th>
+          <?php if ($dow_id == 0): ?>
+            <th class="col-md-2">曜日</th>
+          <?php endif; ?>
           <th class="col-md-2">最低価格</th>
           <!-- <th class="col-md-2">最高価格</th> -->
           <th class="col-md-2">最大利用時間</th>
@@ -109,7 +112,9 @@ $_SESSION["title"] = PRICE_LIST;
   <script type="text/x-template" id="price-row">
     <tr>
       <td>{{ p.hotel_id }}</td>
+      <?php if ($dow_id == 0): ?>
       <td>{{ p.day_of_week }}</td>
+      <?php endif; ?>
       <td>{{ p.min_price }}</td>
       <!-- <td>{{ p.max_price }}</td> -->
       <td>{{ p.time_diff }}</td>
@@ -127,8 +132,7 @@ $_SESSION["title"] = PRICE_LIST;
 
   <!-- PHPからJSへ値渡し -->
   <script>
-    var dowId = "<?= isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0'; ?>";
-    
+    var dowId = "<?= $dow_id ?>";
   </script>
   <?php include_once PUB_PATH.'/parts/footer.php'; ?>
 </body>
