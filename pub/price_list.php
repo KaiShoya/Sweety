@@ -92,11 +92,11 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
           <?php endif; ?>
           <th class="col-md-2">最低価格</th>
           <!-- <th class="col-md-2">最高価格</th> -->
-          <th class="col-md-2">最大利用時間</th>
-          <th class="col-md-2">最終入室時間</th>
           <th class="col-md-2">プラン</th>
           <th class="col-md-2">利用開始</th>
           <th class="col-md-2">利用終了</th>
+          <!-- <th class="col-md-2">最大利用時間</th>
+          <th class="col-md-2">最終入室時間</th> -->
           <!-- <th class="col-md-2">created_at</th>
           <th class="col-md-2">updated_at</th> -->
         </tr>
@@ -117,13 +117,13 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <?php endif; ?>
       <td>{{ p.min_price }}</td>
       <!-- <td>{{ p.max_price }}</td> -->
-      <td>{{ p.time_diff }}</td>
-      <td>{{ p.last_start_time }}</td>
       <td v-if="p.utilization_time == 'Free'">フリー</td>
       <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
       <td v-else>{{ p.utilization_time }}分</td>
       <td>{{ p.time_zone_start }}</td>
       <td>{{ p.time_zone_end }}</td>
+      <!-- <td>{{ p.time_diff }}</td>
+      <td>{{ p.last_start_time }}</td> -->
       <!-- <td>{{ p.created_at }}</td>
       <td>{{ p.updated_at }}</td> -->
     </tr>
