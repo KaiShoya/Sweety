@@ -1,5 +1,5 @@
 <?php
-define("PUBLIC_TOP", '/pub');
+define("PUBLIC_TOP", '/sweety');
 define("PUBLIC_PUB", PUBLIC_TOP.'');
 // define("PUBLIC_SYS", PUBLIC_TOP.'/sys');
 define("ASSETS_PATH", PUBLIC_PUB.'/assets');
