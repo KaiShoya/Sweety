@@ -83,7 +83,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       </label>
     </div>
 
-    <table class="table is-hoverable is-bordered">
+    <table class="table is-hoverable is-bordered is-narrow">
       <thead>
         <tr>
           <th class="col-md-2">ホテル名</th>
