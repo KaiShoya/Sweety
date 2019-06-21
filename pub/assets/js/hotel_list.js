@@ -1,7 +1,7 @@
 Vue.component("hotel-row", {
   template: "#hotel-row",
   props: ["h"]
-});
+})
 
 var app = new Vue({
   el: ".container",
@@ -25,7 +25,7 @@ var app = new Vue({
           credit_card: value["credit_card"] == 1 ? "○" : "×",
           created_at: value["created_at"],
           updated_at: value["updated_at"],
-        });
+        })
       })
     })
     .catch(function (error) {

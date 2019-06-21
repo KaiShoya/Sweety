@@ -1,11 +1,9 @@
 <?php
 define("PUBLIC_TOP", '/sweety');
-define("PUBLIC_PUB", PUBLIC_TOP.'');
-// define("PUBLIC_SYS", PUBLIC_TOP.'/sys');
-define("ASSETS_PATH", PUBLIC_PUB.'/assets');
+define("ASSETS_PATH", PUBLIC_TOP.'/assets');
 
 define("TOP_PATH", __DIR__.'/../..');
-define("PUB_PATH", TOP_PATH.PUBLIC_TOP);
+define("PUB_PATH", TOP_PATH.'/pub');
 define("SYS_PATH", TOP_PATH.'/sys');
 
 // タイトル
