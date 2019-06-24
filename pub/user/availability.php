@@ -14,7 +14,23 @@ Context::login_check();
 
   <!-- コンテンツ -->
   <div class="container">
+    <div class="columns is-mobile">
+      <button v-bind:class="{'is-primary': available == 1}" class="button column" style="height: 200px;" v-on:click="available = 1">空室あり</button>
+      <button v-bind:class="{'is-primary': available == 2}" class="button column" style="height: 200px;" v-on:click="available = 2">空室なし</button>
+    </div>
 
+    <div class="field is-horizontal">
+      <div class="field-label is-large">
+        <label class="label">空室数</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <input class="input is-large" type="number" placeholder="Large input" v-model="vacancies" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- コンテンツ -->
 
