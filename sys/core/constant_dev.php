@@ -11,6 +11,8 @@ define("INDEX", 'トップ');
 define("HOTEL_LIST", 'ホテル一覧');
 define("PRICE_LIST", '価格一覧');
 define("TOS", '利用規約');
+define("LOGIN", "ログイン");
+define("LOGOUT", "ログアウト");
 
 // DB情報
 define("DB_TYPE", 'mysql'); // mysql or pgsql.
