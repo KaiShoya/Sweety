@@ -4,6 +4,13 @@
 		<a class="navbar-item <?= ($_SESSION["title"] == PRICE_LIST) ? "is-active" : "" ; ?>" href="<?= PUBLIC_TOP.'/price_list.php' ?>"><?= PRICE_LIST ?></a>
 		<a class="navbar-item <?= ($_SESSION["title"] == HOTEL_LIST) ? "is-active" : "" ; ?>" href="<?= PUBLIC_TOP.'/hotel_list.php' ?>"><?= HOTEL_LIST ?></a>
 		<a class="navbar-item <?= ($_SESSION["title"] == TOS) ? "is-active" : "" ; ?>" href="<?= PUBLIC_TOP.'/tos.php' ?>"><?= TOS ?></a>
+		<?php if (isset($_SESSION["user_id"]) && isset($_SESSION["user_name"]) && isset($_SESSION["user_role"])): ?>
+			<?php if ($_SESSION["user_role"] === "user"): ?>
+				<a class="navbar-item <?= ($_SESSION["title"] == PRICE_CHANGE) ? "is-active" : "" ; ?>" href="<?= PUBLIC_TOP.'/user/price_change.php' ?>"><?= PRICE_CHANGE ?></a>
+				<a class="navbar-item <?= ($_SESSION["title"] == AVAILABILITY) ? "is-active" : "" ; ?>" href="<?= PUBLIC_TOP.'/user/availability.php' ?>"><?= AVAILABILITY ?></a>
+			<?php endif; ?>
+		<?php endif; ?>
+	</div>
 
 	<div class="navbar-end">
 		<div class="navbar-item">
@@ -26,3 +33,5 @@
 		</div>
 	</div>
 </nav>
+
+<?php include_once PUB_PATH.'/parts/notice.php'; ?>

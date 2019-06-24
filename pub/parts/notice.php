@@ -1,5 +1,5 @@
 <div class="notice">
-	<?php if (array_key_exists("notice", $_SESSION)): ?>
+	<?php if (isset($_SESSION["notice"])): ?>
 		<?php if ($_SESSION["notice"] != ""): ?>
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -9,7 +9,7 @@
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<?php if (array_key_exists("warning", $_SESSION)): ?>
+	<?php if (isset($_SESSION["warning"])): ?>
 		<?php if ($_SESSION["warning"] != ""): ?>
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -19,7 +19,7 @@
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<?php if (array_key_exists("error", $_SESSION)): ?>
+	<?php if (isset($_SESSION["error"])): ?>
 		<?php if ($_SESSION["error"] != ""): ?>
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
