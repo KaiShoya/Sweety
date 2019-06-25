@@ -14,7 +14,7 @@ Context::login_check();
 
   <!-- コンテンツ -->
   <div class="container">
-
+  現在準備中です。
   </div>
   <!-- コンテンツ -->
 

@@ -49,7 +49,6 @@ var app = new Vue({
       //Ajaxリクエスト
       axios.post("api/hotel_list.php")
       .then(function (res) {
-        console.log(res.data)
         res.data.forEach((value, i) => {
           app.hotels.push({
             id: value["id"],
@@ -80,7 +79,6 @@ var app = new Vue({
       //Ajaxリクエスト
       axios.post("api/price_list.php", formData)
       .then(function (res) {
-        console.log(res.data)
         res.data.forEach((value, i) => {
           app.prices.push({
             id: value.id,
