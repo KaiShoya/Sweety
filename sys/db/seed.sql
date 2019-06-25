@@ -981,3 +981,12 @@ INSERT INTO price_lists (hotel_id,day_of_week,min_price,max_price,time_zone_star
 (26, 5, 6800, 8500, "19:00", "36:00", "Lodging", false),
 (26, 6, 7500, 9800, "19:00", "36:00", "Lodging", false),
 (26, 9, 7500, 9800, "19:00", "36:00", "Lodging", false);
+
+
+INSERT INTO users (id,login_id,name,password,role) values
+(1, 'kai', '甲斐', 'shoya', 'admin'),
+(2, 'm-arc', 'ホテル アーク', 'arc', 'user');
+
+INSERT INTO user_hotels (id,user_id,hotel_id) values
+(1, 2, 1);
+

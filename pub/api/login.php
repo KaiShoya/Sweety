@@ -4,19 +4,22 @@ include_once '../../sys/init.php';
 $id = isset($_POST['id']) ? $_POST['id'] : null;
 $passwd = isset($_POST['passwd']) ? $_POST['passwd'] : null;
 
-if ($id === "kai" && $passwd === "shoya") {
-  $_SESSION['user_id'] = $id;
-  $_SESSION['user_name'] = '甲斐';
-  $_SESSION['user_role'] = 'admin';
+$mapper = new UsersMapper();
+$res = $mapper->login($id, $passwd);
+
+if (count($res) == 1) {
+  $_SESSION['user_id'] = $res[0]["login_id"];
+  $_SESSION['user_name'] = $res[0]["name"];
+  $_SESSION['user_role'] = $res[0]["role"];
+
+  $uh = new UserHotels();
+  $uh->hotel_id = $res[0]["id"];
+  $uh_mapper = new UserHotelsMapper();
+  $_SESSION["hotel_id"] = $uh_mapper->find($uh);
 
   $url = PUBLIC_TOP . '/';
-} elseif ($id === 'm-arc') {
-  $_SESSION['hotel_id'] = 1;
-  $_SESSION['user_id'] = $id;
-  $_SESSION['user_name'] = 'ホテル アーク';
-  $_SESSION['user_role'] = 'user';
-  $url = PUBLIC_TOP . '/';
 } else {
+  $_SESSION["error"] = 'ログインIDかパスワードが間違っています。';
   $url = PUBLIC_TOP . '/login.php';
 }
 
