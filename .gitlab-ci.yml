@@ -11,4 +11,4 @@ build:
   script:
     - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -Rev pub/ ./pub  --ignore-time --parallel=10; mirror -Rev sys/ ./sys  --ignore-time --parallel=10;"
   only:
-    - master
+    - test
