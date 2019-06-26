@@ -3,9 +3,12 @@ variables:
   USERNAME: "shoya85.starfree.jp"
   PASSWORD: "anua10fweoi32"
 
-deploy:
+before_script:
+  - apt update -qy
+  - apt install -y lftp
+
+build:
   script:
-    - apt-get update -qq && apt-get install -y -qq lftp
-    - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -R pub pub --parallel=10; mirror -R sys sys --parallel=10"
+    - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -Rev pub/ ./pub  --ignore-time --parallel=10; mirror -Rev sys/ ./sys  --ignore-time --parallel=10;"
   only:
     - master
