@@ -74,19 +74,23 @@ class Context
     file_put_contents(TOP_PATH . '/logs/dev.log', $txt . "\n", FILE_APPEND | LOCK_EX);
   }
 
-  public static function login_check()
+  public static function login_check($role='user')
   {
     if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_role'])) {
       if ($_SESSION['user_role'] === 'admin') {
         return 'ok';
-      } elseif ($_SESSION['user_role'] === 'user' && isset($_SESSION['hotel_id'])) {
+      } elseif ($role === 'user' && $_SESSION['user_role'] === 'user' && isset($_SESSION['hotel_id'])) {
         return 'ok';
       }
-    }
 
-    $_SESSION["error"] = 'ユーザー情報の取得に失敗しました。ログインしてください。';
-    // 変な情報が残っていた時のためにログアウトに飛ばす
-    header('Location: ' . PUBLIC_TOP . '/api/logout.php', true, 301);
-    exit;
+      $_SESSION["error"] = 'アクセス権限がありません。';
+      header('Location: ' . PUBLIC_TOP . '/user/', true, 301);
+      exit;
+    } else {
+      $_SESSION["error"] = 'ユーザー情報の取得に失敗しました。ログインしてください。';
+      // 変な情報が残っていた時のためにログアウトに飛ばす
+      header('Location: ' . PUBLIC_TOP . '/api/logout.php', true, 301);
+      exit;
+    }
   }
 }
