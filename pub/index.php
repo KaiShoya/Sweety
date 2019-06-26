@@ -1,1 +1,2 @@
-<?php include './price_list.php'; ?>
+<?php
+include './price_list.php';

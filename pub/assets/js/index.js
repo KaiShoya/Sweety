@@ -9,7 +9,7 @@ var app = new Vue({
     hotels: [],
   },
   methods: {
-    selectedFile: function(e) {
+    selectedFile: function (e) {
       e.preventDefault()
       let files = e.target.files
       this.uploadFile = files[0]
@@ -22,22 +22,22 @@ var app = new Vue({
       formData.append('file', this.uploadFile)
       //Ajaxリクエスト
       axios.post("api/facepp/group_list.php", formData)
-      .then(function (res) {
-        console.log(res.data)
-        res.data["results"].forEach((value, i) => {
-          app.hotels.push({
-            faceset_token: value["faceset_token"],
-            outer_id: value["outer_id"],
-            display_name: value["display_name"],
-            tags: value["tags"],
-          });
+        .then(function (res) {
+          console.log(res.data)
+          res.data["results"].forEach((value, i) => {
+            app.hotels.push({
+              faceset_token: value["faceset_token"],
+              outer_id: value["outer_id"],
+              display_name: value["display_name"],
+              tags: value["tags"],
+            });
+          })
+          app.isLoading = false
         })
-        app.isLoading = false
-      })
-      .catch(function (error) {
-        console.log(error.data)
-        app.isLoading = false
-      })
+        .catch(function (error) {
+          console.log(error.data)
+          app.isLoading = false
+        })
     }
   }
 })

@@ -1,5 +1,6 @@
 <?php
-class PriceLists extends Model {
+class PriceLists extends Model
+{
   public $id = null;
   // ホテルid
   public $hotel_id = null;
@@ -17,4 +18,3 @@ class PriceLists extends Model {
   public $created_at = null;
   public $updated_at = null;
 }
-

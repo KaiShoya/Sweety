@@ -1,5 +1,6 @@
 <?php
-class AccessLogs extends Model {
+class AccessLogs extends Model
+{
   public $id = null;
   public $access_time = null;
   public $remote_addr = null;
@@ -8,4 +9,3 @@ class AccessLogs extends Model {
   public $created_at = null;
   public $updated_at = null;
 }
-

@@ -1,10 +1,10 @@
 <?php
 define("PUBLIC_TOP", '/Sweety/pub');
-define("ASSETS_PATH", PUBLIC_TOP.'/assets');
+define("ASSETS_PATH", PUBLIC_TOP . '/assets');
 
-define("TOP_PATH", __DIR__.'/../..');
-define("PUB_PATH", TOP_PATH.'/pub');
-define("SYS_PATH", TOP_PATH.'/sys');
+define("TOP_PATH", __DIR__ . '/../..');
+define("PUB_PATH", TOP_PATH . '/pub');
+define("SYS_PATH", TOP_PATH . '/sys');
 
 // タイトル
 define("INDEX", 'トップ');

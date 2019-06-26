@@ -1,5 +1,6 @@
 <?php
-class SearchLogs extends Model {
+class SearchLogs extends Model
+{
   public $id = null;
   public $day_of_week = null;
   public $time_zone_start = null;
@@ -8,4 +9,3 @@ class SearchLogs extends Model {
   public $created_at = null;
   public $updated_at = null;
 }
-

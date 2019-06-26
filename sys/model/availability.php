@@ -1,5 +1,6 @@
 <?php
-class Availability extends Model {
+class Availability extends Model
+{
   public $id = null;
   public $hotel_id = null;
   public $availability = null;
@@ -7,4 +8,3 @@ class Availability extends Model {
   public $created_at = null;
   public $updated_at = null;
 }
-

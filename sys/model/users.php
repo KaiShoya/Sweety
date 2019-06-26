@@ -1,5 +1,6 @@
 <?php
-class Users extends Model {
+class Users extends Model
+{
   public $id = null;
   public $login_id = null;
   public $name = null;
@@ -8,4 +9,3 @@ class Users extends Model {
   public $created_at = null;
   public $updated_at = null;
 }
-

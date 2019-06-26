@@ -6,10 +6,11 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
 
 <!DOCTYPE html>
 <html lang="ja">
-<?php include_once PUB_PATH.'/parts/head.php'; ?>
+<?php include_once PUB_PATH . '/parts/head.php'; ?>
+
 <body>
   <!-- ナビゲーション -->
-  <?php include_once PUB_PATH.'/parts/navbar.php'; ?>
+  <?php include_once PUB_PATH . '/parts/navbar.php'; ?>
   <!-- ナビゲーション -->
 
   <!-- コンテンツ -->
@@ -46,15 +47,11 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
         <div class="level-left">
           <div class="level-item">利用開始時間</div>
           <div class="level-item select">
-            <select name="start_hour"
-                v-model="startHour"
-                v-on:change="change_start_hour">
+            <select name="start_hour" v-model="startHour" v-on:change="change_start_hour">
               <option v-for="d in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]">{{d}}</option>
             </select>
             <span>：</span>
-            <select name="start_time"
-                v-model="startTime"
-                v-on:change="change_start_time">
+            <select name="start_time" v-model="startTime" v-on:change="change_start_time">
               <option value="00">00</option>
               <option value="15">15</option>
               <option value="30">30</option>
@@ -72,9 +69,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
         <div class="level-left">
           <div class="level-item">利用時間　　</div>
           <div class="level-item">
-            <input class="input" type="text" name="utilization_time" style="width: 60px;"
-                v-model="utilizationTime"
-                v-on:change="change_utilization_time"/>
+            <input class="input" type="text" name="utilization_time" style="width: 60px;" v-model="utilizationTime" v-on:change="change_utilization_time" />
             <span>分</span>
           </div>
           <div class="level-item">
@@ -91,9 +86,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       </nav>
 
       <label class="checkbox">
-        <input type="checkbox" id="card_accepted"
-            v-model="cardAccepted"
-            v-on:change="change_card_accepted">
+        <input type="checkbox" id="card_accepted" v-model="cardAccepted" v-on:change="change_card_accepted">
         クレジットカード可
       </label>
     </div>
@@ -102,7 +95,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <thead>
         <tr>
           <th class="col-md-2">ホテル名</th>
-          <?php if ($dow_id == 0): ?>
+          <?php if ($dow_id == 0) : ?>
             <th class="col-md-2">曜日</th>
           <?php endif; ?>
           <th class="col-md-2">最低価格</th>
@@ -127,8 +120,8 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
   <script type="text/x-template" id="price-row">
     <tr>
       <td>{{ p.hotel_id }}</td>
-      <?php if ($dow_id == 0): ?>
-      <td>{{ p.day_of_week }}</td>
+      <?php if ($dow_id == 0) : ?>
+        <td>{{ p.day_of_week }}</td>
       <?php endif; ?>
       <td>{{ p.min_price }}</td>
       <!-- <td>{{ p.max_price }}</td> -->
@@ -149,6 +142,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
   <script>
     var dowId = "<?= $dow_id ?>";
   </script>
-  <?php include_once PUB_PATH.'/parts/footer.php'; ?>
+  <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
+
 </html>
