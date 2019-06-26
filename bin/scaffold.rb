@@ -56,8 +56,8 @@ namespace :create do
       exit
     end
 
-    model = "<?php\nclass #{to_camel(name)} extends Model {\n  public \\\$id = null;\n"
-    mapper = "<?php\nclass #{to_camel(name)}Mapper extends DataMapper {\n  public function __construct() {\n    parent::__construct('#{name}');\n  }\n}\n"
+    model = "<?php\nclass #{to_camel(name)} extends Model\n{\n  public \\\$id = null;\n"
+    mapper = "<?php\nclass #{to_camel(name)}Mapper extends DataMapper\n{\n  public function __construct()\n  {\n    parent::__construct('#{name}');\n  }\n}"
     migration = "CREATE TABLE IF NOT EXISTS #{name} (\n  id int not null auto_increment primary key,\n"
 
     ARGV[1..-1].each do |col|
@@ -65,8 +65,8 @@ namespace :create do
       model += "  public \\\$#{v[0]} = null;\n"
       migration += "  #{v[0]} #{type_cast v[1]},\n"
     end
-    model += "  public \\\$created_at = null;\n  public \\\$updated_at = null;\n}\n"
-    migration += "  created_at timestamp not null default current_timestamp,\n  updated_at timestamp not null default current_timestamp on update current_timestamp\n);\n"
+    model += "  public \\\$created_at = null;\n  public \\\$updated_at = null;\n}"
+    migration += "  created_at timestamp not null default current_timestamp,\n  updated_at timestamp not null default current_timestamp on update current_timestamp\n);"
 
     print "Creating model .. "
     `echo "#{model}" > sys/model/#{name}.php`
@@ -97,6 +97,11 @@ namespace :delete do
       exit
     end
     name = to_snake args[:model_name]
+    migration = "DROP TABLE IF EXISTS #{name};"
+    print "Creating migration .. "
+    filename = migrate(migration)
+    puts "ok."
+
     print "Remove model .. "
     `rm sys/model/#{name}.php`
     puts "ok."
