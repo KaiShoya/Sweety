@@ -1,0 +1,11 @@
+variables:
+  HOST: "shoya85.starfree.jp"
+  USERNAME: "shoya85.starfree.jp"
+  PASSWORD: "anua10fweoi32"
+
+deploy:
+  script:
+    - apt-get update -qq && apt-get install -y -qq lftp
+    - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -R pub pub --parallel=10; mirror -R sys sys --parallel=10"
+  only:
+    - master
