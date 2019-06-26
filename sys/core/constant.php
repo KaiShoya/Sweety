@@ -3,7 +3,7 @@ define("PUBLIC_TOP", '/sweety');
 define("ASSETS_PATH", PUBLIC_TOP . '/assets');
 
 define("TOP_PATH", __DIR__ . '/../..');
-define("PUB_PATH", TOP_PATH . '/pub');
+define("PUB_PATH", TOP_PATH . '/sweety');
 define("SYS_PATH", TOP_PATH . '/sys');
 
 // タイトル
