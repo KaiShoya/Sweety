@@ -42,7 +42,7 @@ $_SESSION["title"] = HOTEL_LIST;
       <!-- <td>{{ h.id }}</td> -->
       <td>{{ h.name }}</td>
       <td>{{ h.address }}</td>
-      <td><a href="tel:{{ h.phone }}">{{ h.phone }}</a></td>
+      <td><a :href="`tel:${ h.phone }`">{{ h.phone }}</a></td>
       <td>{{ h.credit_card }}</td>
       <!-- <td>{{ h.mapcode }}</td> -->
       <!-- <td>{{ h.lat }}</td>
