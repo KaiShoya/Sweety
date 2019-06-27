@@ -33,12 +33,6 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
             <button class="button <?= $dow_id == "8" ? "is-primary" : "" ?>" v-on:click="click_dow">祝日</button>
             <button class="button <?= $dow_id == "9" ? "is-primary" : "" ?>" v-on:click="click_dow">祝前日</button>
             <button class="button <?= $dow_id == "0" ? "is-primary" : "" ?>" v-on:click="click_dow">全曜日</button>
-
-            <!-- <button v-for="dow in day_of_week"
-                v-bind:class="['button', activeDowId == dow.id ? ' is-primary' : '']"
-                v-on:click="click_dow">
-              {{ dow.name }}
-            </button> -->
           </div>
         </div>
       </nav>
@@ -99,15 +93,10 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
             <th class="col-md-2">曜日</th>
           <?php endif; ?>
           <th class="col-md-2">最低価格</th>
-          <!-- <th class="col-md-2">最高価格</th> -->
           <th class="col-md-2">プラン</th>
           <th class="col-md-2">利用開始</th>
           <th class="col-md-2">利用終了</th>
           <th class="col-md-2">空室</th>
-          <!-- <th class="col-md-2">最大利用時間</th>
-          <th class="col-md-2">最終入室時間</th> -->
-          <!-- <th class="col-md-2">created_at</th>
-          <th class="col-md-2">updated_at</th> -->
         </tr>
       </thead>
       <tbody>
@@ -125,7 +114,6 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
         <td>{{ p.day_of_week }}</td>
       <?php endif; ?>
       <td>{{ p.min_price }}</td>
-      <!-- <td>{{ p.max_price }}</td> -->
       <td v-if="p.utilization_time == 'Free'">フリー</td>
       <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
       <td v-else>{{ p.utilization_time }}分</td>
@@ -134,10 +122,6 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <td v-if="p.availability == '1'">あり</td>
       <td v-else-if="p.availability == '2'">なし</td>
       <td v-else>不明{{p.availability}}</td>
-      <!-- <td>{{ p.time_diff }}</td>
-      <td>{{ p.last_start_time }}</td> -->
-      <!-- <td>{{ p.created_at }}</td>
-      <td>{{ p.updated_at }}</td> -->
     </tr>
   </script>
   <!-- Tableテンプレート -->
