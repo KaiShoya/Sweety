@@ -13,9 +13,9 @@ if (count($res) == 1) {
   $_SESSION['user_role'] = $res[0]["role"];
 
   $uh = new UserHotels();
-  $uh->hotel_id = $res[0]["id"];
+  $uh->user_id = $res[0]["id"];
   $uh_mapper = new UserHotelsMapper();
-  $_SESSION["hotel_id"] = $uh_mapper->find($uh);
+  $_SESSION["hotel_id"] = $uh_mapper->get_hotel_ids($uh);
 
   $url = PUBLIC_TOP . '/';
 } else {
