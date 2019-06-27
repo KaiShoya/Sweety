@@ -22,10 +22,16 @@ class DataMapper
 
   public static function find_by_id($id)
   {
-    $sql = 'SELECT * FROM ' . self::$name . ' WHERE id = :id ORDER BY ' . self::$sort . ';';
-    $sth = self::$db->prepare($sql);
-    $sth->execute(array(':id' => $id));
-    return $sth->fetch(PDO::FETCH_ASSOC);
+    if (is_array($id)) {
+      $sql = 'SELECT * FROM ' . self::$name . ' WHERE id IN (' . substr(str_repeat(',?', count($id)), 1) . ') ORDER BY ' . self::$sort . ';';
+      $sth = self::$db->prepare($sql);
+      $sth->execute($id);
+    } else {
+      $sql = 'SELECT * FROM ' . self::$name . ' WHERE id = :id ORDER BY ' . self::$sort . ';';
+      $sth = self::$db->prepare($sql);
+      $sth->execute(array(':id' => $id));
+    }
+    return $sth->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public static function find($vendor)
@@ -70,6 +76,36 @@ class DataMapper
       $data[$key] = $value;
     }
     $sql = 'INSERT INTO ' . self::$name . ' SET ' . implode(",", $set);
+    $sth = self::$db->prepare($sql);
+    $sth->execute($data);
+    return self::$db->lastInsertId();
+  }
+
+  public static function duplicate_update($vendor, $update)
+  {
+    $set = array();
+    $update_key = array();
+    $data = array();
+    foreach ($vendor as $key => $value) {
+      if ($key == 'id') {
+        continue;
+      }
+      if ($value == null) {
+        continue;
+      }
+      array_push($set, "$key = :$key");
+      $data[$key] = $value;
+    }
+    foreach ($update as $key => $value) {
+      if ($key == 'id') {
+        continue;
+      }
+      if ($value != true) {
+        continue;
+      }
+      array_push($update_key, "$key = :$key");
+    }
+    $sql = 'INSERT INTO ' . self::$name . ' SET ' . implode(",", $set) . ' ON DUPLICATE KEY UPDATE ' . implode(",", $update_key);
     $sth = self::$db->prepare($sql);
     $sth->execute($data);
     return self::$db->lastInsertId();
