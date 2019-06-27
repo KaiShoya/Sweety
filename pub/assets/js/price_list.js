@@ -94,6 +94,7 @@ var app = new Vue({
               updated_at: value.updated_at,
               time_diff: value.time_diff.slice(0, -3),
               last_start_time: value.last_start_time.slice(0, -3),
+              availability: value.availability
             })
           })
         })

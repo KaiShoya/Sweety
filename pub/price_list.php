@@ -103,6 +103,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
           <th class="col-md-2">プラン</th>
           <th class="col-md-2">利用開始</th>
           <th class="col-md-2">利用終了</th>
+          <th class="col-md-2">空室</th>
           <!-- <th class="col-md-2">最大利用時間</th>
           <th class="col-md-2">最終入室時間</th> -->
           <!-- <th class="col-md-2">created_at</th>
@@ -130,6 +131,9 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <td v-else>{{ p.utilization_time }}分</td>
       <td>{{ p.time_zone_start }}</td>
       <td>{{ p.time_zone_end }}</td>
+      <td v-if="p.availability == '1'">あり</td>
+      <td v-else-if="p.availability == '2'">なし</td>
+      <td v-else>不明{{p.availability}}</td>
       <!-- <td>{{ p.time_diff }}</td>
       <td>{{ p.last_start_time }}</td> -->
       <!-- <td>{{ p.created_at }}</td>
