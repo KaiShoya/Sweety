@@ -6,6 +6,7 @@ $start_hour = isset($_REQUEST["start_hour"]) ? $_REQUEST["start_hour"] : null;
 $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
 $utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";
 $card_accepted = isset($_REQUEST["card_accepted"]) ? "1" : "0";
+$available = isset($_REQUEST["available"]) ? ($_REQUEST["available"] == "undefined") ? [] : explode(",", $_REQUEST["available"]) : array("0", "1", "2");
 
 $log = new SearchLogs();
 $log->card_accepted = $card_accepted;
@@ -31,6 +32,7 @@ if ($dow == 0 && $start_hour == null && $utilization_time == null && $card_accep
   }
   $model->utilization_time = $utilization_time;
   $model->credit_card = $card_accepted;
+  $model->availability = $available;
   $price_list = $prices::find_by($model);
 
   $log->day_of_week = $dow;

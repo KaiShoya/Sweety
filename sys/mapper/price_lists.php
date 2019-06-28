@@ -55,6 +55,20 @@ class PriceListsMapper extends DataMapper
           array_push($set, "credit_card = true");
         }
         continue;
+      } elseif ($key == "availability") {
+        if ($value) {
+          $tmp_set = "";
+          if (in_array("0", $value)) {
+            $tmp_set = "availability IS NULL OR ";
+          }
+          $prepares = [];
+          foreach ($value as $k => $v) {
+            array_push($prepares, ":availability" . $k);
+            $data["availability" . $k] = $v;
+          }
+          array_push($set, $tmp_set . "availability IN (" . implode(", ", $prepares) . ")");
+        }
+        continue;
       } else {
         continue;
       }

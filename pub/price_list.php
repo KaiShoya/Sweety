@@ -79,6 +79,26 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
         </div>
       </nav>
 
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">空室状況　　</div>
+          <div class="level-item has-text-centered">
+            <label class="checkbox">
+              <input type="checkbox" value="1" v-model="isAvailable" v-on:change="change_is_available">
+              あり　
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" value="2" v-model="isAvailable" v-on:change="change_is_available">
+              なし　
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" value="0" v-model="isAvailable" v-on:change="change_is_available">
+              不明　
+            </label>
+          </div>
+        </div>
+      </nav>
+
       <label class="checkbox">
         <input type="checkbox" id="card_accepted" v-model="cardAccepted" v-on:change="change_card_accepted">
         クレジットカード可
@@ -106,13 +126,16 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
   </div>
   <!-- コンテンツ -->
 
+  <!-- PHPからJSへ値渡し -->
+  <script>
+    var dowId = "<?= $dow_id ?>";
+  </script>
+
   <!-- Tableテンプレート -->
   <script type="text/x-template" id="price-row">
     <tr>
       <td>{{ p.hotel_id }}</td>
-      <?php if ($dow_id == 0) : ?>
-        <td>{{ p.day_of_week }}</td>
-      <?php endif; ?>
+      <td v-if="dowId == '0'">{{ p.day_of_week }}</td>
       <td>{{ p.min_price }}</td>
       <td v-if="p.utilization_time == 'Free'">フリー</td>
       <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
@@ -121,15 +144,11 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <td>{{ p.time_zone_end }}</td>
       <td v-if="p.availability == '1'">あり</td>
       <td v-else-if="p.availability == '2'">なし</td>
-      <td v-else>不明{{p.availability}}</td>
+      <td v-else>不明</td>
     </tr>
   </script>
   <!-- Tableテンプレート -->
 
-  <!-- PHPからJSへ値渡し -->
-  <script>
-    var dowId = "<?= $dow_id ?>";
-  </script>
   <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
 

@@ -11,6 +11,7 @@ var app = new Vue({
     startTime: "00",
     utilizationTime: null,
     cardAccepted: false,
+    isAvailable: [0, 1, 2],
     isLoading: false,
     sortKey: "price",
     day_of_week: [
@@ -35,10 +36,12 @@ var app = new Vue({
     st = (params.start_time === undefined) ? "00" : params.start_time
     ut = (params.utilization_time === undefined) ? null : params.utilization_time
     ca = "card_accepted" in params
+    av = ("card_accepted" in params) ? ((params.available === undefined) ? [] : params.available.split(",")) : [0, 1, 2]
     this.startHour = sh
     this.startTime = st
     this.utilizationTime = ut
     this.cardAccepted = ca
+    this.isAvailable = av
   },
   methods: {
     get_hosts: function (e) {
@@ -203,6 +206,15 @@ var app = new Vue({
         params = app.create_params("card_accepted", undefined)
       } else {
         params = app.create_params("card_accepted", null)
+      }
+      window.location.href = window.location.pathname + "?" + params
+    },
+
+    change_is_available: function (e) {
+      if (this.isAvailable.length > 0) {
+        params = app.create_params("available", this.isAvailable)
+      } else {
+        params = app.create_params("available", undefined)
       }
       window.location.href = window.location.pathname + "?" + params
     },
