@@ -36,7 +36,7 @@ var app = new Vue({
     st = (params.start_time === undefined) ? "00" : params.start_time
     ut = (params.utilization_time === undefined) ? null : params.utilization_time
     ca = "card_accepted" in params
-    av = ("card_accepted" in params) ? ((params.available === undefined) ? [] : params.available.split(",")) : [0, 1, 2]
+    av = ("available" in params) ? ((params.available === undefined) ? [] : params.available.split(",")) : [0, 1, 2]
     this.startHour = sh
     this.startTime = st
     this.utilizationTime = ut
