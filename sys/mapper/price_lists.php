@@ -79,7 +79,7 @@ class PriceListsMapper extends DataMapper
       unset($data["time_zone_start"]);
     }
 
-    $sql = 'SELECT ' . implode(", ", $select) . ' FROM ' . self::$name . ' LEFT JOIN (SELECT id AS h_id, credit_card FROM hotels) h ON hotel_id = h_id LEFT JOIN (SELECT hotel_id AS a_id, availability FROM availability) a ON hotel_id = a_id WHERE ' . implode(" AND ", $set) . ' ORDER BY ' . self::$sort . ';';
+    $sql = 'SELECT ' . implode(", ", $select) . ' FROM ' . self::$name . ' LEFT JOIN (SELECT id AS h_id, credit_card FROM hotels) h ON hotel_id = h_id LEFT JOIN (SELECT hotel_id AS a_id, availability, updated_at AS updated_at_availability FROM availability) a ON hotel_id = a_id WHERE ' . implode(" AND ", $set) . ' ORDER BY ' . self::$sort . ';';
     $sth = self::$db->prepare($sql);
     $sth->execute($data);
     return $sth->fetchAll(PDO::FETCH_ASSOC);

@@ -117,6 +117,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
           <th class="col-md-2">利用開始</th>
           <th class="col-md-2">利用終了</th>
           <th class="col-md-2">空室</th>
+          <th class="col-md-2">空室状況最終更新時間</th>
         </tr>
       </thead>
       <tbody>
@@ -145,6 +146,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <td v-if="p.availability == '1'">あり</td>
       <td v-else-if="p.availability == '2'">なし</td>
       <td v-else>不明</td>
+      <td>{{ p.updated_at_availability }}</td>
     </tr>
   </script>
   <!-- Tableテンプレート -->
