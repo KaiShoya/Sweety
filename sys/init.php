@@ -10,7 +10,9 @@ session_start();
 
 # core
 if (gethostname() == "sv5.php.starfree.ne.jp") {
-  require_once 'core/constant.php';
+  require_once 'core/constant_starfree.php';
+} else if (gethostname() == "www.sweetyhotel.shop") {
+  require_once 'core/constant_xrea.php';
 } else {
   require_once 'core/constant_dev.php';
 }

@@ -1,15 +1,14 @@
+image: centos:7
+
 variables:
   HOST: "s1008.xrea.com"
   USERNAME: "sweetyhotel"
   PASSWORD: "gaQdyTVbBq00"
 
-before_script:
-  - yum install -y epel-release
-  - yum install -y ncftp --enablerepo=epel
-
-build:
-  image: centos:7
+deploy:
   script:
+    - yum install -y epel-release
+    - yum install -y ncftp --enablerepo=epel
     - echo "put index.php;put -R sys/;cd public_html/;put -R pub/*;quit"|ncftp -u $USERNAME -p $PASSWORD $HOST
   only:
     - master
