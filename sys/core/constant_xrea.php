@@ -1,5 +1,5 @@
 <?php
-define("PUBLIC_TOP", '/sweety');
+define("PUBLIC_TOP", '');
 define("ASSETS_PATH", PUBLIC_TOP . '/assets');
 
 define("TOP_PATH", __DIR__ . '/../..');
