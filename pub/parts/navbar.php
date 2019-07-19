@@ -35,7 +35,7 @@
 </nav>
 
 <?php if (gethostname() == "s1008.xrea.com") : ?>
-	<div align="center" style="margin-top: 10px">
+	<div align="center">
 		<!--nobanner-->
 		<script type="text/javascript" src="https://cache1.value-domain.com/xa.j?site=sweetyhotel.s1008.xrea.com"></script>
 	</div>
