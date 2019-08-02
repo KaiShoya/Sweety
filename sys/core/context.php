@@ -74,7 +74,7 @@ class Context
     file_put_contents(TOP_PATH . '/logs/dev.log', $txt . "\n", FILE_APPEND | LOCK_EX);
   }
 
-  public static function login_check($role='user')
+  public static function login_check($role = 'user')
   {
     if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_role'])) {
       if ($_SESSION['user_role'] === 'admin') {

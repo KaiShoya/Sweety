@@ -117,7 +117,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
           <th class="col-md-2">利用開始</th>
           <th class="col-md-2">利用終了</th>
           <th class="col-md-2">空室</th>
-          <th class="col-md-2">空室状況最終更新時間</th>
+          <th class="col-md-2"></th>
         </tr>
       </thead>
       <tbody>
@@ -151,6 +151,11 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
   </script>
   <!-- Tableテンプレート -->
 
+  <script src="<?= ASSETS_PATH ?>/js/moment.min.js"></script>
+  <script src="<?= ASSETS_PATH ?>/js/moment-with-locales.min.js"></script>
+  <script>
+    moment.locale('ja');
+  </script>
   <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
 
