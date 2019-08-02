@@ -1,13 +1,13 @@
 <?php
 $associative_array = debug_backtrace();
-$file = pathinfo($associative_array[0]["file"])['filename'];
+$file = pathinfo($associative_array[0]["file"]);
+$subdir = str_replace(realpath(PUB_PATH), "", $file["dirname"]);
 ?>
 
-<!-- Ajax用㝮 -->
 <script src="<?= ASSETS_PATH ?>/js/axios.min.js"></script>
 <script src="<?= ASSETS_PATH ?>/js/vue.min.js"></script>
 <script src="<?= ASSETS_PATH ?>/js/buefy.min.js"></script>
 <script src="<?= ASSETS_PATH ?>/js/lodash.min.js"></script>
-<?php if (file_exists(PUB_PATH . "/assets/js/" . $file . ".js")) : ?>
-  <script src="<?= ASSETS_PATH ?>/js/<?= $file ?>.js"></script>
+<?php if (file_exists(PUB_PATH . "/assets/js" . $subdir . "/" . $file["filename"] . ".js")) : ?>
+  <script src="<?= ASSETS_PATH ?>/js<?= $subdir ?>/<?= $file["filename"] ?>.js"></script>
 <?php endif; ?>

@@ -84,4 +84,18 @@ class PriceListsMapper extends DataMapper
     $sth->execute($data);
     return $sth->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public static function find_by_hotel_id($id)
+  {
+    if (is_array($id)) {
+      $sql = 'SELECT * FROM ' . self::$name . ' WHERE hotel_id IN (' . substr(str_repeat(',?', count($id)), 1) . ') ORDER BY ' . self::$sort . ';';
+      $sth = self::$db->prepare($sql);
+      $sth->execute($id);
+    } else {
+      $sql = 'SELECT * FROM ' . self::$name . ' WHERE hotel_id = :hotel_id ORDER BY ' . self::$sort . ';';
+      $sth = self::$db->prepare($sql);
+      $sth->execute(array(':hotel_id' => $id));
+    }
+    return $sth->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
