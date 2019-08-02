@@ -16,6 +16,7 @@ if (gethostname() == "sv5.php.starfree.ne.jp") {
 } else {
   require_once 'core/constant_dev.php';
 }
+require_once 'core/title.php';
 require_once 'core/context.php';
 
 # model
