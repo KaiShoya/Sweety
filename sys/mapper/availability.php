@@ -9,7 +9,7 @@ class AvailabilityMapper extends DataMapper
   public static function find_by_hotel_id($ids)
   {
     if (is_array($ids)) {
-      $sql = 'SELECT availability FROM ' . self::$name . ' WHERE hotel_id IN (' . substr(str_repeat(',?', count($ids)), 1) . ') ORDER BY ' . self::$sort . ';';
+      $sql = 'SELECT hotel_id,availability FROM ' . self::$name . ' WHERE hotel_id IN (' . substr(str_repeat(',?', count($ids)), 1) . ') ORDER BY ' . self::$sort . ';';
       $sth = self::$db->prepare($sql);
       $sth->execute($ids);
     } else {
@@ -17,6 +17,7 @@ class AvailabilityMapper extends DataMapper
       $sth = self::$db->prepare($sql);
       $sth->execute(array(':id' => $ids));
     }
-    return $sth->fetchAll(PDO::FETCH_COLUMN);
+    return $sth->fetchAll(PDO::FETCH_ASSOC);
+  }
   }
 }

@@ -1,5 +1,6 @@
 <?php
 include_once '../../sys/init.php';
+Context::login_check();
 
 $hotel_id = isset($_REQUEST['hotel_id']) ? $_REQUEST['hotel_id'] : null;
 $available = isset($_REQUEST['available']) ? $_REQUEST['available'] : 0;
