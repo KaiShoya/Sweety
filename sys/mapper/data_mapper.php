@@ -12,9 +12,9 @@ class DataMapper
     self::$sort = $id;
   }
 
-  public static function all()
+  public static function all($column="*")
   {
-    $sql = 'SELECT * FROM ' . self::$name . ' ORDER BY ' . self::$sort . ';';
+    $sql = 'SELECT ' . $column . ' FROM ' . self::$name . ' ORDER BY ' . self::$sort . ';';
     $sth = self::$db->prepare($sql);
     $sth->execute();
     return $sth->fetchAll(PDO::FETCH_ASSOC);

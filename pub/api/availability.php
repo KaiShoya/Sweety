@@ -9,7 +9,7 @@ echo ",";
 echo $available;
 echo ",";
 
-if (isset($_SESSION["hotel_id"]) && in_array($hotel_id, $_SESSION["hotel_id"])) {
+if (($_SESSION['user_role'] == 'admin' && isset($hotel_id)) || (isset($_SESSION["hotel_id"]) && in_array($hotel_id, $_SESSION["hotel_id"]))) {
   $model = new Availability();
   $model->hotel_id = $hotel_id;
   $model->availability = $available;
@@ -18,7 +18,11 @@ if (isset($_SESSION["hotel_id"]) && in_array($hotel_id, $_SESSION["hotel_id"])) 
   $update->availability = true;
 
   $mapper = new AvailabilityMapper();
-  echo $mapper->duplicate_update($model, $update);
+  if ($available === 0) {
+    echo $mapper->destroy_hotel_id($hotel_id);
+  } else {
+    echo $mapper->duplicate_update($model, $update);
+  }
 } else {
   echo "false";
 }
