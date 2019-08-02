@@ -9,7 +9,7 @@ $hotels = $mapper->find_by_id($_SESSION["hotel_id"]);
 $a_mapper = new AvailabilityMapper();
 $tmp = $a_mapper->find_by_hotel_id($_SESSION["hotel_id"]);
 $availavility = [];
-foreach($tmp as $value) {
+foreach ($tmp as $value) {
   $availavility[$value["hotel_id"]] = $value["availability"];
 }
 ?>

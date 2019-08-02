@@ -12,7 +12,7 @@ class DataMapper
     self::$sort = $id;
   }
 
-  public static function all($column="*")
+  public static function all($column = "*")
   {
     $sql = 'SELECT ' . $column . ' FROM ' . self::$name . ' ORDER BY ' . self::$sort . ';';
     $sth = self::$db->prepare($sql);

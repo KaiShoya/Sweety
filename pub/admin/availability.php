@@ -9,7 +9,7 @@ $hotels = $mapper->all();
 $a_mapper = new AvailabilityMapper();
 $tmp = $a_mapper->all();
 $availavility = [];
-foreach($tmp as $value) {
+foreach ($tmp as $value) {
   $availavility[$value["hotel_id"]] = $value["availability"];
 }
 ?>
