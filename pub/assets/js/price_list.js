@@ -105,7 +105,7 @@ var app = new Vue({
               time_diff: value.time_diff.slice(0, -3),
               last_start_time: value.last_start_time.slice(0, -3),
               availability: value.availability,
-              updated_at_availability: value.updated_at_availability
+              updated_at_availability: (value.updated_at_availability == null) ? null : moment(new Date(value.updated_at_availability)).fromNow()
             })
           })
         })
