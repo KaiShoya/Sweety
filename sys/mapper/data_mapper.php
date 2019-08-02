@@ -118,6 +118,6 @@ class DataMapper
       id = :id'
     );
     $st->execute(array(':id' => $vendor->id));
-    return $del->rowCount();
+    return $st->rowCount();
   }
 }

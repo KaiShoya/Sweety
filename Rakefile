@@ -14,7 +14,7 @@ put -R pub/*
 quit'|ncftp`
 end
 
-desc 'deploy to SREA'
+desc 'deploy to XREA'
 task :deploy_xrea do
   host = "s1008.xrea.com"
   username = "sweetyhotel"
