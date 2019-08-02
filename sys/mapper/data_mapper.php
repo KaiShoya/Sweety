@@ -117,7 +117,7 @@ class DataMapper
       'DELETE FROM ' . self::$name . ' WHERE
       id = :id'
     );
-    $st->execute(array(':id' => $vendor->id));
+    $st->execute(array(':id' => id));
     return $st->rowCount();
   }
 }
