@@ -20,7 +20,7 @@ $file = pathinfo($associative_array[0]["file"])['filename'];
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?= $_SESSION["title"] ?></title>
   <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/buefy.min.css">
+  <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/bulma.min.css">
   <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/common.css">
   <?php if (file_exists(PUB_PATH . "/assets/css/" . $file . ".css")) : ?>
     <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/<?= $file ?>.css">
