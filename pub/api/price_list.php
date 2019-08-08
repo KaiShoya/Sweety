@@ -1,7 +1,7 @@
 <?php
 include_once '../../sys/init.php';
 
-$dow = isset($_REQUEST["dow_id"]) ? $_REQUEST["dow_id"] : "0";
+$dow = isset($_REQUEST["dow_id"]) ? $_REQUEST["dow_id"] : date('N');
 $start_hour = isset($_REQUEST["start_hour"]) ? $_REQUEST["start_hour"] : null;
 $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
 $utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";

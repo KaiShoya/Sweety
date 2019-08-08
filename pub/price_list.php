@@ -1,7 +1,7 @@
 <?php
 include_once '../sys/init.php';
 $_SESSION["title"] = PRICE_LIST;
-$dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
+$dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : date('N');
 ?>
 
 <!DOCTYPE html>
