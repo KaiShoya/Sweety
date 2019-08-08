@@ -140,6 +140,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <td>{{ p.min_price }}</td>
       <td v-if="p.utilization_time == 'Free'">フリー</td>
       <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
+      <td v-else-if="p.utilization_time == 'Reserved'">予約</td>
       <td v-else>{{ p.utilization_time }}分</td>
       <td>{{ p.time_zone_start }}</td>
       <td>{{ p.time_zone_end }}</td>
