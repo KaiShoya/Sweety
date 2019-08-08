@@ -23,7 +23,7 @@ var app = new Vue({
             mapcode: value['mapcode'],
             lat: value['lat'],
             lon: value['lon'],
-            credit_card: value['credit_card'],// == 1 ? 1 : 0,
+            credit_card: value['credit_card'],
             created_at: value['created_at'],
             updated_at: value['updated_at']
           })
