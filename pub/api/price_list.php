@@ -6,7 +6,7 @@ $start_hour = isset($_REQUEST["start_hour"]) ? $_REQUEST["start_hour"] : null;
 $start_time = isset($_REQUEST["start_time"]) ? $_REQUEST["start_time"] : "00";
 $utilization_time = isset($_REQUEST["utilization_time"]) ? $_REQUEST["utilization_time"] : "0";
 $card_accepted = isset($_REQUEST["card_accepted"]) ? "1" : "0";
-$available = isset($_REQUEST["available"]) ? ($_REQUEST["available"] == "undefined") ? [] : explode(",", $_REQUEST["available"]) : array("0", "1", "2");
+$available = isset($_REQUEST["available"]) ? ($_REQUEST["available"] == "undefined") ? [] : explode(",", $_REQUEST["available"]) : array("0", "1");
 
 $log = new SearchLogs();
 $log->card_accepted = $card_accepted;
