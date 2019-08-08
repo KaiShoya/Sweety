@@ -43,7 +43,16 @@ $_SESSION["title"] = HOTEL_LIST;
       <td>{{ h.name }}</td>
       <td>{{ h.address }}</td>
       <td><a :href="`tel:${ h.phone }`">{{ h.phone }}</a></td>
-      <td>{{ h.credit_card }}</td>
+      <td v-if="h.credit_card == '1'">
+        <span class="icon">
+          <?= IconHelper::check() ?>
+        </span>
+      </td>
+      <td v-else>
+        <span class="icon">
+          <?= IconHelper::close() ?>
+        </span>
+      </td>
       <!-- <td>{{ h.mapcode }}</td> -->
       <!-- <td>{{ h.lat }}</td>
       <td>{{ h.lon }}</td> -->

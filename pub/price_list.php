@@ -143,9 +143,21 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : '0';
       <td v-else>{{ p.utilization_time }}分</td>
       <td>{{ p.time_zone_start }}</td>
       <td>{{ p.time_zone_end }}</td>
-      <td v-if="p.availability == '1'">あり</td>
-      <td v-else-if="p.availability == '2'">なし</td>
-      <td v-else>不明</td>
+      <td v-if="p.availability == '1'">
+        <span class="icon">
+          <?= IconHelper::check() ?>
+        </span>
+      </td>
+      <td v-else-if="p.availability == '2'">
+        <span class="icon">
+          <?= IconHelper::close() ?>
+        </span>
+      </td>
+      <td v-else>
+        <span class="icon">
+          <?= IconHelper::help() ?>
+        </span>
+      </td>
       <td>{{ p.updated_at_availability }}</td>
     </tr>
   </script>
