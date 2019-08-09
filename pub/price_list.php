@@ -83,17 +83,17 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : date('N');
         <div class="level-left">
           <div class="level-item">空室状況　　</div>
           <div class="level-item has-text-centered">
-            <label class="checkbox">
+            <label class="checkbox" style="margin-right: 1rem;">
               <input type="checkbox" value="1" v-model="isAvailable" v-on:change="change_is_available">
-              あり　
+              <span class="tag is-success">あり</span>
             </label>
-            <label class="checkbox">
+            <label class="checkbox" style="margin-right: 1rem;">
               <input type="checkbox" value="2" v-model="isAvailable" v-on:change="change_is_available">
-              なし　
+              <span class="tag is-danger">なし</span>
             </label>
             <label class="checkbox">
               <input type="checkbox" value="0" v-model="isAvailable" v-on:change="change_is_available">
-              不明　
+              <span class="tag is-warning">不明</span>
             </label>
           </div>
         </div>
@@ -105,25 +105,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : date('N');
       </label>
     </div>
 
-    <table class="table is-hoverable is-bordered is-narrow">
-      <thead>
-        <tr>
-          <th class="col-md-2">ホテル名</th>
-          <?php if ($dow_id == 0) : ?>
-            <th class="col-md-2">曜日</th>
-          <?php endif; ?>
-          <th class="col-md-2">最低価格</th>
-          <th class="col-md-2">プラン</th>
-          <th class="col-md-2">利用開始</th>
-          <th class="col-md-2">利用終了</th>
-          <th class="col-md-2">空室</th>
-          <th class="col-md-2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr is="price-row" v-for="price in orderedPrices" :p="price"></tr>
-      </tbody>
-    </table>
+    <div class="box" is="price-row" v-for="price in orderedPrices" :p="price"></div>
   </div>
   <!-- コンテンツ -->
 
@@ -132,25 +114,35 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : date('N');
     var dowId = "<?= $dow_id ?>";
   </script>
 
-  <!-- Tableテンプレート -->
+  <!-- テンプレート -->
   <script type="text/x-template" id="price-row">
-    <tr>
-      <td>{{ p.hotel_id }}</td>
-      <td v-if="dowId == '0'">{{ p.day_of_week }}</td>
-      <td>{{ p.min_price }}</td>
-      <td v-if="p.utilization_time == 'Free'">フリー</td>
-      <td v-else-if="p.utilization_time == 'Lodging'">宿泊</td>
-      <td v-else-if="p.utilization_time == 'Reserved'">予約</td>
-      <td v-else>{{ p.utilization_time }}分</td>
-      <td>{{ p.time_zone_start }}</td>
-      <td>{{ p.time_zone_end }}</td>
-      <td v-if="p.availability == '1'">あり</td>
-      <td v-else-if="p.availability == '2'">なし</td>
-      <td v-else>不明</td>
-      <td>{{ p.updated_at_availability }}</td>
-    </tr>
+    <div>
+      <div class="content">
+        <div>
+          <span v-bind:class="[p.availability == '1' ? 'is-success' : p.availability == '2' ? 'is-danger' : 'is-warning', 'tag']">
+            <small v-if="p.updated_at_availability == null">未更新</small>
+            <small v-else>{{ p.updated_at_availability }}</small>
+          </span>
+          <span class="tag is-info"><small>クレカOK</small></span>
+        </div>
+        <p>
+          <strong>{{ p.hotel_id }}</strong>
+          <span>
+            <small>プラン:</small>
+            <small v-if="p.utilization_time == 'Free'"><strong>フリー</strong></small>
+            <small v-else-if="p.utilization_time == 'Lodging'"><strong>宿泊</strong></small>
+            <small v-else><strong>{{ p.utilization_time }}分</strong></small>
+          </span>
+          <small>{{ p.time_zone_start }}〜{{ p.time_zone_end }}</small>
+          <br>
+          料金:
+          <strong v-if="p.min_price == p.max_price">{{ p.min_price }}</strong>
+          <strong v-else>{{ p.min_price }}〜{{ p.max_price }}</strong>
+        </p>
+      </div>
+    </div>
   </script>
-  <!-- Tableテンプレート -->
+  <!-- テンプレート -->
 
   <script src="<?= ASSETS_PATH ?>/js/moment.min.js"></script>
   <script src="<?= ASSETS_PATH ?>/js/moment-with-locales.min.js"></script>
