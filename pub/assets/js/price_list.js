@@ -11,7 +11,7 @@ var app = new Vue({
     startTime: '00',
     utilizationTime: null,
     cardAccepted: false,
-    isAvailable: [0, 1, 2],
+    isAvailable: [0, 1],
     isLoading: false,
     sortKey: 'price',
     day_of_week: [
@@ -41,7 +41,7 @@ var app = new Vue({
         ? params.available === undefined
           ? []
           : params.available.split(',')
-        : [0, 1, 2]
+        : [0, 1]
     this.startHour = sh
     this.startTime = st
     this.utilizationTime = ut

@@ -38,3 +38,9 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.box {
+  padding: 1rem;
+  margin: 0.5rem !important;
+  /* margin-bottom: 0.5rem !important; */
+}

@@ -14,44 +14,35 @@ $_SESSION["title"] = HOTEL_LIST;
 
   <!-- コンテンツ -->
   <div class="container">
-    <table class="table is-hoverable is-bordered">
-      <thead>
-        <tr>
-          <!-- <th class="col-md-2">id</th> -->
-          <th class="col-md-2">ホテル名</th>
-          <th class="col-md-2">住所</th>
-          <th class="col-md-2">電話番号</th>
-          <th class="col-md-2">カード</th>
-          <!-- <th class="col-md-2">マップコード</th> -->
-          <!-- <th class="col-md-2">緯度</th>
-          <th class="col-md-2">経度</th> -->
-          <!-- <th class="col-md-2">created_at</th>
-          <th class="col-md-2">updated_at</th> -->
-        </tr>
-      </thead>
-      <tbody>
-        <tr is="hotel-row" v-for="hotel in hotels" :h="hotel"></tr>
-      </tbody>
-    </table>
+    <div class="box" is="hotel-row" v-for="hotel in hotels" :h="hotel"></div>
   </div>
   <!-- コンテンツ -->
 
-  <!-- Tableテンプレート -->
+  <!-- テンプレート -->
   <script type="text/x-template" id="hotel-row">
-    <tr>
-      <!-- <td>{{ h.id }}</td> -->
-      <td>{{ h.name }}</td>
-      <td>{{ h.address }}</td>
-      <td><a :href="`tel:${ h.phone }`">{{ h.phone }}</a></td>
-      <td>{{ h.credit_card }}</td>
-      <!-- <td>{{ h.mapcode }}</td> -->
-      <!-- <td>{{ h.lat }}</td>
-      <td>{{ h.lon }}</td> -->
-      <!-- <td>{{ h.created_at }}</td>
-      <td>{{ h.updated_at }}</td> -->
-    </tr>
+    <div>
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <!-- <span class="tag is-success">
+                <small>空き状況:1日前</small>
+              </span> -->
+              <span v-if="h.credit_card == '1'" class="tag is-info">
+                <small>クレカOK</small>
+              </span>
+              <br>
+              <strong style="font-size: 1.2rem;line-hight: 10px;">{{ h.name }}</strong>
+              <br>
+              <small>{{ h.address }}</small>
+              <small><a :href="`tel:${ h.phone }`">{{ h.phone }}</a></small>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
   </script>
-  <!-- Tableテンプレート -->
+  <!-- テンプレート -->
 
   <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
