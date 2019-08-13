@@ -93,6 +93,7 @@ var app = new Vue({
             app.prices.push({
               id: value.id,
               hotel_id: app.hotels[value.hotel_id - 1].name,
+              credit_card: app.hotels[value.hotel_id - 1].credit_card,
               // day_of_week: value.day_of_week,
               day_of_week: app.get_day_of_week_name(value.day_of_week),
               min_price: value.min_price,

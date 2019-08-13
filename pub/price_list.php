@@ -123,7 +123,7 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : date('N');
             <small v-if="p.updated_at_availability == null">未更新</small>
             <small v-else>{{ p.updated_at_availability }}</small>
           </span>
-          <span class="tag is-info"><small>クレカOK</small></span>
+          <span v-if="p.credit_card == '1'" class="tag is-info"><small>クレカOK</small></span>
         </div>
         <p>
           <strong>{{ p.hotel_id }}</strong>
