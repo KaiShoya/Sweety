@@ -66,7 +66,7 @@ class PriceListsMapper extends DataMapper
             array_push($prepares, ":availability" . $k);
             $data["availability" . $k] = $v;
           }
-          array_push($set, $tmp_set . "availability IN (" . implode(", ", $prepares) . ")");
+          array_push($set, "(" . $tmp_set . "availability IN (" . implode(", ", $prepares) . "))");
         }
         continue;
       } else {
