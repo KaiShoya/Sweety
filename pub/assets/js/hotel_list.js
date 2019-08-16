@@ -25,7 +25,9 @@ var app = new Vue({
             lon: value['lon'],
             credit_card: value['credit_card'],
             created_at: value['created_at'],
-            updated_at: value['updated_at']
+            updated_at: value['updated_at'],
+            availability: value['availability'],
+            updated_at_availability:  (value.updated_at_availability == null) ? null : moment(new Date(value.updated_at_availability)).fromNow()
           })
         })
       })
