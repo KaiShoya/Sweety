@@ -39,7 +39,7 @@ class DataMapper
     $set = array();
     $data = array();
     foreach ($vendor as $key => $value) {
-      if ($value == null) {
+      if ($value === null) {
         continue;
       }
       array_push($set, "$key = :$key");
@@ -66,10 +66,10 @@ class DataMapper
     $set = array();
     $data = array();
     foreach ($vendor as $key => $value) {
-      if ($key == 'id') {
+      if ($key === 'id') {
         continue;
       }
-      if ($value == null) {
+      if ($value === null) {
         continue;
       }
       array_push($set, "$key = :$key");
@@ -87,25 +87,45 @@ class DataMapper
     $update_key = array();
     $data = array();
     foreach ($vendor as $key => $value) {
-      if ($key == 'id') {
+      if ($key === 'id') {
         continue;
       }
-      if ($value == null) {
+      if ($value === null) {
         continue;
       }
       array_push($set, "$key = :$key");
       $data[$key] = $value;
     }
     foreach ($update as $key => $value) {
-      if ($key == 'id') {
+      if ($key === 'id') {
         continue;
       }
-      if ($value != true) {
+      if ($value !== true) {
         continue;
       }
       array_push($update_key, "$key = :$key");
     }
     $sql = 'INSERT INTO ' . self::$name . ' SET ' . implode(",", $set) . ' ON DUPLICATE KEY UPDATE ' . implode(",", $update_key);
+    $sth = self::$db->prepare($sql);
+    $sth->execute($data);
+    return self::$db->lastInsertId();
+  }
+
+  public static function update($vendor)
+  {
+    $set = array();
+    $data = array();
+    foreach ($vendor as $key => $value) {
+      if ($key === 'id') {
+        continue;
+      }
+      if ($value === null) {
+        continue;
+      }
+      array_push($set, "$key = :$key");
+      $data[$key] = $value;
+    }
+    $sql = 'UPDATE ' . self::$name . ' SET ' . implode(",", $set) . ' WHERE id = ' . $vendor->id;
     $sth = self::$db->prepare($sql);
     $sth->execute($data);
     return self::$db->lastInsertId();
