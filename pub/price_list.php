@@ -119,6 +119,9 @@ $dow_id = isset($_REQUEST['dow_id']) ? $_REQUEST['dow_id'] : date('N');
     <div>
       <div class="content">
         <div>
+          <?php if ($dow_id == 0): ?>
+            <span class="tag">{{ p.day_of_week }}</span>
+          <?php endif; ?>
           <span v-bind:class="[p.availability == '1' ? 'is-success' : p.availability == '2' ? 'is-danger' : 'is-warning', 'tag']">
             <small v-if="p.updated_at_availability == null">未更新</small>
             <small v-else>{{ p.updated_at_availability }}</small>

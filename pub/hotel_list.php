@@ -14,6 +14,12 @@ $_SESSION["title"] = HOTEL_LIST;
 
   <!-- コンテンツ -->
   <div class="container">
+    <div>
+      空き状況：
+      <span class="tag is-success">あり</span>
+      <span class="tag is-danger">なし</span>
+      <span class="tag is-warning">不明</span>
+    </div>
     <div class="box" is="hotel-row" v-for="hotel in hotels" :h="hotel"></div>
   </div>
   <!-- コンテンツ -->
@@ -25,9 +31,10 @@ $_SESSION["title"] = HOTEL_LIST;
         <div class="media-content">
           <div class="content">
             <p>
-              <!-- <span class="tag is-success">
-                <small>空き状況:1日前</small>
-              </span> -->
+              <span v-bind:class="[h.availability == '1' ? 'is-success' : h.availability == '2' ? 'is-danger' : 'is-warning', 'tag']">
+                <small v-if="h.updated_at_availability == null">未更新</small>
+                <small v-else>{{ h.updated_at_availability }}</small>
+              </span>
               <span v-if="h.credit_card == '1'" class="tag is-info">
                 <small>クレカOK</small>
               </span>
@@ -44,6 +51,11 @@ $_SESSION["title"] = HOTEL_LIST;
   </script>
   <!-- テンプレート -->
 
+  <script src="<?= ASSETS_PATH ?>/js/moment.min.js"></script>
+  <script src="<?= ASSETS_PATH ?>/js/moment-with-locales.min.js"></script>
+  <script>
+    moment.locale('ja');
+  </script>
   <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
 
