@@ -42,9 +42,9 @@ foreach ($tmp as $value) {
             <td>
               <div class="field has-addons">
                 <p class="control">
-                  <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '1', <?= $hotel["id"] ?>)">空室あり</button>
-                  <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '2'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '2', <?= $hotel["id"] ?>)">空室なし</button>
-                  <button v-bind:class="{'is-primary': ['1', '2'].indexOf(available[<?= $hotel["id"] ?>]) < 0}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '0', <?= $hotel["id"] ?>)">不明</button>
+                  <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '1')">空室あり</button>
+                  <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '2'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '2')">空室なし</button>
+                  <button v-bind:class="{'is-primary': ['1', '2'].indexOf(available[<?= $hotel["id"] ?>]) < 0}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '0')">不明</button>
                 </p>
               </div>
             </td>
