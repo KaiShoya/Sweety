@@ -1,9 +1,24 @@
 var app = new Vue({
   el: '.container',
   data: {
-    available: availables
+    available: availables,
+    delete: deletes
   },
   methods: {
+    onClickDeleted: function(hotelId) {
+      let deleteFlg = '0'
+      if (this.delete[hotelId] === '0') {
+        deleteFlg = '1'
+      }
+      this.$set(this.delete, hotelId, deleteFlg)
+      axios.post(
+        topPath +
+          '/api/deleted.php?hotel_id=' +
+          hotelId +
+          '&delete_flg=' +
+          deleteFlg
+      )
+    },
     onClick: function(hotelId, available) {
       this.$set(this.available, hotelId, available)
       axios.post(

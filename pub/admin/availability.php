@@ -4,7 +4,13 @@ $_SESSION["title"] = AVAILABILITY;
 Context::login_check('admin');
 
 $mapper = new HotelsMapper();
-$hotels = $mapper->all();
+$hotels = $mapper->all(true);
+
+// 削除フラグだけを取り出す
+$deleted = [];
+foreach ($hotels as $hotel) {
+  $deleted[$hotel["id"]] = $hotel["deleted"];
+}
 
 $a_mapper = new AvailabilityMapper();
 $tmp = $a_mapper->all();
@@ -31,6 +37,9 @@ foreach ($tmp as $value) {
           <tr>
             <td><?= $hotel["name"] ?></td>
             <td>
+              <button v-bind:class="{'is-primary': delete[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClickDeleted(<?= $hotel["id"] ?>)">削除</button>
+            </td>
+            <td>
               <div class="field has-addons">
                 <p class="control">
                   <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '1', <?= $hotel["id"] ?>)">空室あり</button>
@@ -50,6 +59,8 @@ foreach ($tmp as $value) {
   <script>
     const topPath = '<?= PUBLIC_TOP ?>';
     const availables = <?= json_encode($availavility) ?>;
+    const deletes = <?= json_encode($deleted) ?>;
+    console.log(deletes);
   </script>
   <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
