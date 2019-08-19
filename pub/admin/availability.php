@@ -60,7 +60,6 @@ foreach ($tmp as $value) {
     const topPath = '<?= PUBLIC_TOP ?>';
     const availables = <?= json_encode($availavility) ?>;
     const deletes = <?= json_encode($deleted) ?>;
-    console.log(deletes);
   </script>
   <?php include_once PUB_PATH . '/parts/footer.php'; ?>
 </body>
