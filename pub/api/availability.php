@@ -4,10 +4,6 @@ Context::login_check();
 
 $hotel_id = isset($_REQUEST['hotel_id']) ? $_REQUEST['hotel_id'] : null;
 $available = isset($_REQUEST['available']) ? $_REQUEST['available'] : 0;
-echo $hotel_id;
-echo ",";
-echo $available;
-echo ",";
 
 if (($_SESSION['user_role'] == 'admin' && isset($hotel_id)) || (isset($_SESSION["hotel_id"]) && in_array($hotel_id, $_SESSION["hotel_id"]))) {
   $model = new Availability();

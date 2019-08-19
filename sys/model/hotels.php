@@ -15,6 +15,8 @@ class Hotels extends Model
   public $lon = null;
   // クレジットカード可否
   public $credit_card = null;
+  // 論理削除フラグ
+  public $deleted = null;
   public $created_at = null;
   public $updated_at = null;
 }
