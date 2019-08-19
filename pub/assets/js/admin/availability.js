@@ -6,11 +6,13 @@ var app = new Vue({
   },
   methods: {
     onClickDeleted: function(hotelId) {
-      let deleteFlg = '0'
-      if (this.delete[hotelId] === '0') {
-        deleteFlg = '1'
+      let deleteFlg = 0
+      if (this.delete[hotelId] === 0) {
+        deleteFlg = 1
       }
       this.$set(this.delete, hotelId, deleteFlg)
+      // console.log(this.delete[hotelId])
+      // console.log(this.delete[hotelId] === '1')
       axios.post(
         topPath +
           '/api/deleted.php?hotel_id=' +

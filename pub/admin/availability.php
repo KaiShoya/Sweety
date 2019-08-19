@@ -9,7 +9,7 @@ $hotels = $mapper->all(true);
 // 削除フラグだけを取り出す
 $deleted = [];
 foreach ($hotels as $hotel) {
-  $deleted[$hotel["id"]] = $hotel["deleted"];
+  $deleted[$hotel["id"]] = (int) $hotel["deleted"];
 }
 
 $a_mapper = new AvailabilityMapper();
@@ -37,7 +37,7 @@ foreach ($tmp as $value) {
           <tr>
             <td><?= $hotel["name"] ?></td>
             <td>
-              <button v-bind:class="{'is-primary': delete[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClickDeleted(<?= $hotel["id"] ?>)">削除</button>
+              <button v-bind:class="{'is-primary': this.delete[<?= $hotel["id"] ?>]}" class="button" v-on:click="onClickDeleted(<?= $hotel["id"] ?>)">削除</button>
             </td>
             <td>
               <div class="field has-addons">
