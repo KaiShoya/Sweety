@@ -34,21 +34,21 @@ foreach ($tmp as $value) {
     <table class="table is-hoverable is-bordered">
       <tbody>
         <?php foreach ($hotels as $i => $hotel) : ?>
-          <tr>
-            <td><?= $hotel["name"] ?></td>
-            <td>
-              <button v-bind:class="{'is-primary': this.delete[<?= $hotel["id"] ?>]}" class="button" v-on:click="onClickDeleted(<?= $hotel["id"] ?>)">削除</button>
-            </td>
-            <td>
-              <div class="field has-addons">
-                <p class="control">
-                  <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '1')">空室あり</button>
-                  <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '2'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '2')">空室なし</button>
-                  <button v-bind:class="{'is-primary': ['1', '2'].indexOf(available[<?= $hotel["id"] ?>]) < 0}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '0')">不明</button>
-                </p>
-              </div>
-            </td>
-          </tr>
+        <tr>
+          <td><?= $hotel["name"] ?></td>
+          <td>
+            <button v-bind:class="{'is-primary': this.delete[<?= $hotel["id"] ?>]}" class="button" v-on:click="onClickDeleted(<?= $hotel["id"] ?>)">削除</button>
+          </td>
+          <td>
+            <div class="field has-addons">
+              <p class="control">
+                <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '1'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '1')">空室あり</button>
+                <button v-bind:class="{'is-primary': available[<?= $hotel["id"] ?>] == '2'}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '2')">空室なし</button>
+                <button v-bind:class="{'is-primary': ['1', '2'].indexOf(available[<?= $hotel["id"] ?>]) < 0}" class="button" v-on:click="onClick(<?= $hotel["id"] ?>, '0')">不明</button>
+              </p>
+            </div>
+          </td>
+        </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
