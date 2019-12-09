@@ -1,9 +1,9 @@
 image: centos:7
 
-variables:
-  HOST: "s1008.xrea.com"
-  USERNAME: "sweetyhotel"
-  PASSWORD: "gaQdyTVbBq00"
+# variables:
+#   HOST: "s1008.xrea.com"
+#   USERNAME: "sweetyhotel"
+#   PASSWORD: ""
 
 deploy:
   script:

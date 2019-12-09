@@ -11,8 +11,6 @@ var app = new Vue({
         deleteFlg = 1
       }
       this.$set(this.delete, hotelId, deleteFlg)
-      // console.log(this.delete[hotelId])
-      // console.log(this.delete[hotelId] === '1')
       axios.post(
         topPath +
           '/api/deleted.php?hotel_id=' +
