@@ -23,24 +23,3 @@ brew install ncftp
 # CentOS
 sudo yum install -y ncftp
 ```
-
-# サーバ情報
-[StarServerFree](https://secure.netowl.jp/starserver/?action_user_free_index=true)
-- FTP
-    host: shoya85.starfree.jp
-    user: shoya85.starfree.jp
-    pass: anua10fweoi32
-    - ファイル転送
-```
-ncftp -u shoya85.starfree.jp -p sdnvwoqiu3r shoya85.starfree.jp
-put -R pub/
-put -R sys/
-```
-echo 'open -u shoya85.starfree.jp -p sdnvwoqiu3r shoya85.starfree.jp
-put -R pub/
-put -R sys/
-quit'|ncftp
-
-- MySQL
-    user: shoya85_root
-    pass: sdnvwoqiu3r
