@@ -42,6 +42,7 @@ $_SESSION["title"] = HOTEL_LIST;
               <a :href="`https://www.google.com/maps/search/?api=1&query=${ h.address }`" target="_blank" rel="noopener">
                 <strong style="font-size: 1.2rem;line-hight: 10px;">{{ h.name }}</strong>
               </a>
+              <a :href="`${h.website}`" target="_blank" rel="noopener">{{ h.website }}</a>
               <br>
               <small>{{ h.address }}</small>
               <small><a :href="`tel:${ h.phone }`">{{ h.phone }}</a></small>

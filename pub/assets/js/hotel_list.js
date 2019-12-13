@@ -24,6 +24,7 @@ var app = new Vue({
             lat: value['lat'],
             lon: value['lon'],
             credit_card: value['credit_card'],
+            website: value['website'],
             created_at: value['created_at'],
             updated_at: value['updated_at'],
             availability: value['availability'],
